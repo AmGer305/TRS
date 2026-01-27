@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Leseraum – The Richter Scale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +11,8 @@
         *, *::before, *::after { box-sizing: border-box; }
         
         :root {
-            /* === HIER HINTERGRUNDBILD LINK EINFÜGEN === */
-            /* Z.B.: url('https://example.com/bild.jpg'); */
+            /* === HINTERGRUNDBILD === */
+            /* Achte darauf, dass der Dateiname auf GitHub EXAKT so geschrieben ist (Groß/Klein beachten!) */
             --bg-image: url('https://amger305.github.io/TRS/backdroptrs.jpeg'); 
 
             --bg-deep: #0a0908;
@@ -27,12 +27,12 @@
             --gold-border: rgba(212, 168, 83, 0.4);
             
             /* Highlight Farben */
-            --cat-love: #e88a9c; --cat-love-bg: rgba(232, 138, 156, 0.25);
-            --cat-funny: #7dd3a8; --cat-funny-bg: rgba(125, 211, 168, 0.25);
-            --cat-tension: #e07b54; --cat-tension-bg: rgba(224, 123, 84, 0.25);
-            --cat-ship: #d477b8; --cat-ship-bg: rgba(212, 119, 184, 0.25);
-            --cat-confused: #7ba3d4; --cat-confused-bg: rgba(123, 163, 212, 0.25);
-            --cat-boring: #8a8a8a; --cat-boring-bg: rgba(138, 138, 138, 0.25);
+            --cat-love: #e88a9c; --cat-love-bg: rgba(232, 138, 156, 0.3);
+            --cat-funny: #7dd3a8; --cat-funny-bg: rgba(125, 211, 168, 0.3);
+            --cat-tension: #e07b54; --cat-tension-bg: rgba(224, 123, 84, 0.3);
+            --cat-ship: #d477b8; --cat-ship-bg: rgba(212, 119, 184, 0.3);
+            --cat-confused: #7ba3d4; --cat-confused-bg: rgba(123, 163, 212, 0.3);
+            --cat-boring: #8a8a8a; --cat-boring-bg: rgba(138, 138, 138, 0.3);
 
             --font-serif: 'Crimson Pro', Georgia, serif;
             --font-sans: 'Outfit', system-ui, sans-serif;
@@ -43,177 +43,125 @@
         body {
             margin: 0; padding: 0;
             background-color: var(--bg-deep);
-            /* Hintergrundbild Logik */
             background-image: var(--bg-image);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-blend-mode: overlay; 
-            
             color: var(--text-primary);
             font-family: var(--font-serif);
             line-height: 1.85;
             min-height: 100vh;
         }
         
-        /* Overlay für bessere Lesbarkeit auf Bildern */
+        /* Starkes Overlay damit Text auf Bild lesbar bleibt */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(10,9,8,0.95), rgba(10,9,8,0.85));
+            background: linear-gradient(to bottom, rgba(10,9,8,0.92), rgba(10,9,8,0.85));
             pointer-events: none;
             z-index: 0;
         }
+
+        /* LOGIN SCREEN (SICHERHEIT) */
+        .login-screen {
+            position: fixed; inset: 0; background: #050505; z-index: 10000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 2rem; text-align: center;
+        }
+        .login-screen.hidden { display: none; }
+        .login-input {
+            background: var(--bg-elevated); border: 1px solid var(--text-muted);
+            padding: 0.8rem 1.2rem; border-radius: 8px; color: var(--gold);
+            font-family: var(--font-sans); font-size: 1.2rem; text-align: center;
+            margin-bottom: 1rem; width: 200px; outline: none;
+        }
+        .login-input:focus { border-color: var(--gold); }
+        .login-error { color: #e88a9c; font-size: 0.9rem; margin-top: 1rem; opacity: 0; }
+        .login-error.visible { opacity: 1; }
 
         /* Header */
         .header {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            background: linear-gradient(to bottom, var(--bg-deep) 0%, rgba(10,9,8,0.95) 60%, transparent 100%);
+            background: linear-gradient(to bottom, var(--bg-deep) 0%, rgba(10,9,8,0.95) 70%, transparent 100%);
             padding: 1rem 2rem 2.5rem;
+            transition: all 0.3s ease;
         }
         
         .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
         }
         
         .logo {
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
+            font-family: var(--font-sans); font-size: 0.7rem; font-weight: 300;
+            letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
         }
         
         .header-controls { display: flex; gap: 0.6rem; }
         
         .btn {
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            font-weight: 500;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: var(--bg-elevated);
-            color: var(--text-secondary);
+            font-family: var(--font-sans); font-size: 0.7rem; font-weight: 500;
+            padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer;
+            transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.08);
+            background: var(--bg-elevated); color: var(--text-secondary);
+            /* Mobile touch target fix */
+            min-height: 40px; display: flex; align-items: center;
         }
         
         .btn:hover { background: var(--bg-hover); color: var(--text-primary); }
-        .btn-primary { background: var(--gold); color: var(--bg-deep); border: none; }
-        .btn-primary:hover { background: #e0b860; }
+        .btn-primary { background: var(--gold); color: var(--bg-deep); border: none; font-weight: 600; }
         .btn-ghost { background: transparent; }
 
-        /* Progress Bar (Scrollbar fixed) */
+        /* Progress Bar */
         .progress-container {
-            position: fixed;
-            top: 70px;
-            left: 0; right: 0;
-            display: flex;
-            justify-content: center;
-            z-index: 99;
-            pointer-events: none; /* Damit man durchklicken kann an den Rändern */
+            position: fixed; top: 70px; left: 0; right: 0;
+            display: flex; justify-content: center; z-index: 99; pointer-events: none;
         }
 
         .progress-bar {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 2rem;
-            pointer-events: auto;
-            overflow-x: auto; /* Erlaubt scrollen bei vielen Kapiteln */
-            max-width: 100%;
-            scrollbar-width: none; /* Firefox scrollbar verstecken */
-            -ms-overflow-style: none;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 2rem;
+            pointer-events: auto; overflow-x: auto; max-width: 100%;
+            scrollbar-width: none; -ms-overflow-style: none;
+            /* Fade effect at edges for scroll indication */
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
-        
         .progress-bar::-webkit-scrollbar { display: none; }
 
         .progress-dot {
-            min-width: 36px; width: 36px; height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 2px solid var(--text-muted);
-            background: var(--bg-elevated);
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0; /* Verhindert das Quetschen */
+            min-width: 36px; width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600;
+            border: 2px solid var(--text-muted); background: var(--bg-elevated);
+            color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; flex-shrink: 0;
         }
+        .progress-dot.completed { background: var(--gold); border-color: var(--gold); color: var(--bg-deep); }
+        .progress-dot.current { border-color: var(--gold); color: var(--gold); box-shadow: 0 0 15px rgba(212, 168, 83, 0.3); transform: scale(1.1); }
+        .progress-dot.locked { opacity: 0.4; cursor: not-allowed; border-color: rgba(255,255,255,0.1); }
         
-        .progress-dot.completed {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--bg-deep);
-        }
-        
-        .progress-dot.current {
-            border-color: var(--gold);
-            color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 168, 83, 0.3);
-            transform: scale(1.1);
-        }
-        
-        .progress-dot.locked {
-            opacity: 0.4;
-            cursor: not-allowed;
-            border-color: rgba(255,255,255,0.1);
-        }
-        
-        .progress-line {
-            min-width: 20px; width: 40px; height: 2px;
-            background: var(--text-muted);
-            opacity: 0.3;
-            flex-shrink: 0;
-        }
-        
+        .progress-line { min-width: 20px; width: 40px; height: 2px; background: var(--text-muted); opacity: 0.3; flex-shrink: 0; }
         .progress-line.completed { background: var(--gold); opacity: 1; }
 
         /* Main Content */
         .main-container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 9rem 2rem 6rem;
-            position: relative;
-            z-index: 1;
+            max-width: 720px; margin: 0 auto;
+            padding: 9rem 2rem 6rem; /* Standard Padding Desktop */
+            position: relative; z-index: 1;
         }
         
         .chapter-header { text-align: center; margin-bottom: 3rem; }
-        
         .chapter-number {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
+            font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500;
+            letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
         }
-        
         .chapter-title {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin: 0;
-            line-height: 1.3;
+            font-family: var(--font-serif); font-size: 1.8rem; font-weight: 500;
+            color: var(--text-primary); margin: 0; line-height: 1.3;
         }
-        
         .chapter-title::after {
             content: ''; display: block; width: 60px; height: 1px;
             background: linear-gradient(to right, transparent, var(--gold), transparent);
@@ -221,46 +169,35 @@
         }
 
         /* Manuscript */
-        .manuscript { font-size: 1.1rem; line-height: 1.9; }
+        .manuscript { font-size: 1.15rem; line-height: 1.9; }
         .manuscript p { margin: 0 0 1.5em 0; text-indent: 0; }
         .manuscript p + p { text-indent: 1.5em; margin-top: 0; }
-        
         .manuscript p:first-child::first-letter {
             font-size: 3.5em; float: left; line-height: 0.8;
             padding-right: 0.1em; padding-top: 0.1em;
             color: var(--gold); font-weight: 600;
         }
-        
-        .scene-break {
-            text-align: center; margin: 2.5rem 0;
-            color: var(--gold); font-size: 1.2rem;
-        }
+        .scene-break { text-align: center; margin: 2.5rem 0; color: var(--gold); font-size: 1.2rem; }
 
-        /* Highlights Fix */
+        /* Highlights */
         .highlight {
-            padding: 2px 0;
-            cursor: pointer;
-            transition: all 0.15s ease;
+            padding: 2px 0; cursor: pointer; transition: all 0.15s ease;
             border-bottom: 2px solid transparent;
-            /* Wichtig für saubere Markierungen über mehrere Zeilen: */
-            -webkit-box-decoration-break: clone;
-            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone; box-decoration-break: clone;
         }
-        
         .highlight.love { background: var(--cat-love-bg); border-bottom-color: var(--cat-love); }
         .highlight.funny { background: var(--cat-funny-bg); border-bottom-color: var(--cat-funny); }
         .highlight.tension { background: var(--cat-tension-bg); border-bottom-color: var(--cat-tension); }
         .highlight.ship { background: var(--cat-ship-bg); border-bottom-color: var(--cat-ship); }
         .highlight.confused { background: var(--cat-confused-bg); border-bottom-color: var(--cat-confused); }
         .highlight.boring { background: var(--cat-boring-bg); border-bottom-color: var(--cat-boring); }
-        
         .highlight:hover { filter: brightness(1.2); }
 
-        /* Popup Components (Overlay, Comment, etc) */
+        /* Popup Components */
         .overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+            position: fixed; inset: 0; background: rgba(0,0,0,0.8);
             z-index: 200; opacity: 0; visibility: hidden;
-            transition: all 0.25s ease; backdrop-filter: blur(2px);
+            transition: all 0.25s ease; backdrop-filter: blur(4px);
         }
         .overlay.visible { opacity: 1; visibility: visible; }
 
@@ -273,7 +210,7 @@
             width: 440px; max-width: 92vw;
             z-index: 210; opacity: 0; visibility: hidden;
             transition: all 0.25s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
         .popup.visible { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
         
@@ -284,66 +221,60 @@
             margin-bottom: 1.2rem; max-height: 100px; overflow-y: auto;
         }
         
-        .category-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.2rem;
-        }
-        
+        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.2rem; }
         .cat-btn {
             display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
             padding: 0.8rem 0.5rem; background: var(--bg-elevated);
-            border: 2px solid transparent; border-radius: 10px;
-            cursor: pointer; color: var(--text-secondary);
-            font-family: var(--font-sans); font-size: 0.65rem;
+            border: 2px solid transparent; border-radius: 10px; cursor: pointer;
+            color: var(--text-secondary); font-family: var(--font-sans); font-size: 0.65rem;
         }
         .cat-btn:hover { background: var(--bg-hover); }
         .cat-btn .emoji { font-size: 1.4rem; }
-        
+        .cat-btn.selected { background: var(--gold-dim); border-color: var(--gold); }
+        /* Specific colors for selection */
         .cat-btn.love.selected { background: var(--cat-love-bg); border-color: var(--cat-love); color: var(--cat-love); }
         .cat-btn.funny.selected { background: var(--cat-funny-bg); border-color: var(--cat-funny); color: var(--cat-funny); }
         .cat-btn.tension.selected { background: var(--cat-tension-bg); border-color: var(--cat-tension); color: var(--cat-tension); }
         .cat-btn.ship.selected { background: var(--cat-ship-bg); border-color: var(--cat-ship); color: var(--cat-ship); }
         .cat-btn.confused.selected { background: var(--cat-confused-bg); border-color: var(--cat-confused); color: var(--cat-confused); }
         .cat-btn.boring.selected { background: var(--cat-boring-bg); border-color: var(--cat-boring); color: var(--cat-boring); }
-        
+
         .popup-textarea {
             width: 100%; min-height: 80px; padding: 0.8rem;
             background: var(--bg-elevated); border: 1px solid rgba(255,255,255,0.08);
             border-radius: 8px; color: var(--text-primary);
-            font-family: var(--font-serif); font-size: 0.95rem; resize: vertical; outline: none;
+            font-family: var(--font-serif); font-size: 1rem; resize: vertical; outline: none;
         }
         .popup-textarea:focus { border-color: var(--gold-border); }
 
         /* Questionnaire */
         .questionnaire-container {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.9);
-            z-index: 300; overflow-y: auto; padding: 2rem;
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            z-index: 300; overflow-y: auto; padding: 1rem;
             opacity: 0; visibility: hidden; transition: all 0.3s ease;
         }
         .questionnaire-container.visible { opacity: 1; visibility: visible; }
-        
         .questionnaire {
             background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px; max-width: 640px; margin: 2rem auto; padding: 2rem;
+            border-radius: 20px; max-width: 640px; margin: 2rem auto; padding: 1.5rem;
         }
-        
-        .emoji-scale { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .emoji-scale { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: space-between; }
         .emoji-btn {
-            width: 50px; height: 50px; border-radius: 12px;
+            width: 45px; height: 45px; border-radius: 12px;
             background: var(--bg-elevated); border: 2px solid transparent;
             font-size: 1.5rem; cursor: pointer; display: flex;
             align-items: center; justify-content: center;
         }
-        .emoji-btn:hover { transform: scale(1.1); background: var(--bg-hover); }
-        .emoji-btn.selected { border-color: var(--gold); background: var(--gold-dim); }
+        .emoji-btn.selected { border-color: var(--gold); background: var(--gold-dim); transform: scale(1.1); }
 
         /* Welcome Screen */
         .welcome-screen {
             position: fixed; inset: 0; background: var(--bg-deep); z-index: 400;
             display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease; padding: 1rem;
         }
         .welcome-screen.hidden { opacity: 0; pointer-events: none; }
-        .welcome-content { text-align: center; max-width: 480px; padding: 2rem; }
+        .welcome-content { text-align: center; max-width: 480px; padding: 1rem; }
 
         /* Sidebar */
         .sidebar {
@@ -354,13 +285,11 @@
             box-shadow: -10px 0 30px rgba(0,0,0,0.5);
         }
         .sidebar.visible { transform: translateX(0); }
-        
         .mark-card {
             background: var(--bg-elevated); border-radius: 10px; padding: 0.9rem;
             margin-bottom: 0.7rem; border-left: 3px solid transparent;
             cursor: pointer; transition: all 0.15s ease;
         }
-        .mark-card:hover { background: var(--bg-hover); transform: translateX(-2px); }
         .mark-card.love { border-left-color: var(--cat-love); }
         .mark-card.funny { border-left-color: var(--cat-funny); }
         .mark-card.tension { border-left-color: var(--cat-tension); }
@@ -372,24 +301,52 @@
         .footer {
             position: fixed; bottom: 0; left: 0; right: 0;
             background: linear-gradient(to top, var(--bg-deep) 0%, rgba(10,9,8,0.95) 70%, transparent 100%);
-            padding: 2rem 2rem 1rem; z-index: 50; pointer-events: none;
+            padding: 1rem; z-index: 50; pointer-events: none;
         }
         .footer-inner {
             max-width: 800px; margin: 0 auto; display: flex; justify-content: center;
-            gap: 2.5rem; font-family: var(--font-sans); font-size: 0.65rem; color: var(--text-muted);
+            gap: 1.5rem; font-family: var(--font-sans); font-size: 0.65rem; color: var(--text-muted);
         }
 
+        /* === MOBILE OPTIMIERUNG === */
         @media (max-width: 600px) {
-            .main-container { padding: 8rem 1.2rem 8rem; }
-            .header { padding: 0.8rem 1rem 1.5rem; }
-            .progress-bar { justify-content: flex-start; padding-left: 1rem; padding-right: 1rem; }
-            .sidebar { width: 100%; }
-            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            html { font-size: 16px; } /* Etwas kleinere Basis-Schrift */
+            
+            .header { padding: 0.5rem 1rem 1rem; background: rgba(10,9,8,0.95); }
+            .header-inner { flex-direction: row; }
+            .logo { font-size: 0.6rem; }
+            .logo span { display: none; } /* Subtitle auf Handy ausblenden für Platz */
+            
+            .progress-container { top: 60px; }
+            
+            .main-container { 
+                padding: 7rem 1.2rem 5rem; /* Weniger Padding oben/unten */
+            }
+            
+            .sidebar { width: 100%; padding-top: 5rem; }
+            .popup { width: 95vw; padding: 1rem; }
+            .category-grid { grid-template-columns: repeat(3, 1fr); gap: 0.3rem; }
+            .cat-btn { padding: 0.5rem; font-size: 0.6rem; }
+            
+            .chapter-title { font-size: 1.5rem; }
+            
+            /* Buttons größer für Touch */
+            .btn { min-height: 44px; padding: 0.5rem 1rem; }
+            .emoji-btn { width: 44px; height: 44px; }
         }
     </style>
 </head>
 <body>
-    <div class="welcome-screen" id="welcomeScreen">
+
+    <div class="login-screen" id="loginScreen">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔐</div>
+        <h2 style="font-family: var(--font-serif); margin-bottom: 1.5rem; color: var(--text-primary);">The Richter Scale</h2>
+        <input type="password" class="login-input" id="passwordInput" placeholder="Passwort eingeben">
+        <button class="btn btn-primary" onclick="checkPassword()">Zugang anfordern</button>
+        <div class="login-error" id="loginError">Falsches Passwort. Versuch's nochmal.</div>
+    </div>
+
+    <div class="welcome-screen hidden" id="welcomeScreen">
         <div class="welcome-content">
             <div style="font-size: 4rem; margin-bottom: 1.5rem;">📖</div>
             <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Willkommen im 
@@ -409,15 +366,14 @@
         <div class="header-inner">
             <div class="logo">Leseraum <span>• The Richter Scale</span></div>
             <div class="header-controls">
-                <button class="btn" onclick="toggleSidebar()">💬 Markierungen</button>
-                <button class="btn btn-primary" onclick="openQuestionnaire()">Kapitel fertig ✓</button>
+                <button class="btn" onclick="toggleSidebar()">💬 Marks</button>
+                <button class="btn btn-primary" onclick="openQuestionnaire()">Fertig ✓</button>
             </div>
         </div>
     </header>
 
     <div class="progress-container">
-        <div class="progress-bar" id="progressBar">
-            </div>
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
     <main class="main-container">
@@ -443,7 +399,7 @@
         <textarea class="popup-textarea" id="popupComment" placeholder="Gedanken dazu? (optional)"></textarea>
         <div style="display:flex; justify-content:space-between; margin-top:1rem;">
             <button class="btn btn-ghost" id="btnDelete" style="color:#c87070;" onclick="deleteHighlight()">Löschen</button>
-            <div>
+            <div style="display:flex; gap:0.5rem;">
                 <button class="btn btn-ghost" onclick="closePopup()">Abbrechen</button>
                 <button class="btn btn-primary" onclick="saveHighlight()">Speichern</button>
             </div>
@@ -472,13 +428,44 @@
 
     <script>
     /* ================================================================
-       === KONFIGURATION & INHALT (HIER NEUE KAPITEL EINFÜGEN) ===
-       ================================================================
-       Um ein neues Kapitel hinzuzufügen:
-       1. Kopiere einen { ... } Block im "chapters" Array.
-       2. Setze eine neue ID und Nummer.
-       3. Füge deinen Text bei `content` ein. (Nutze Backticks ` für mehrzeiligen Text)
-    */
+       === 🔐 SICHERHEITSEINSTELLUNGEN ===
+       ================================================================ */
+    
+    // Das Passwort für deine Betaleserin. Ändere es hier.
+    const SECRET_PASSWORD = "Richter2024"; 
+
+    function checkPassword() {
+        const input = document.getElementById('passwordInput').value;
+        const error = document.getElementById('loginError');
+        
+        if (input === SECRET_PASSWORD) {
+            // Passwort richtig: Login ausblenden, App starten
+            document.getElementById('loginScreen').classList.add('hidden');
+            
+            // Prüfen ob Welcome Screen schon mal gesehen wurde
+            if (!localStorage.getItem('leseraum_started')) {
+                document.getElementById('welcomeScreen').classList.remove('hidden');
+            }
+            
+            // App initialisieren
+            init();
+        } else {
+            // Passwort falsch
+            error.classList.add('visible');
+            document.getElementById('passwordInput').value = '';
+            setTimeout(() => error.classList.remove('visible'), 2000);
+        }
+    }
+
+    // Enter-Taste Support für Passwort
+    document.getElementById('passwordInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') checkPassword();
+    });
+
+
+    /* ================================================================
+       === INHALT (KAPITEL) ===
+       ================================================================ */
 
     const chapters = [
         {
@@ -486,8 +473,7 @@
             number: "Chapter One",
             title: '"How Fast Can You Get To Zurich?"',
             content: `Lucas Castro was jogging his usual route along the Schuylkill River... (Hier deinen vollen Text einfügen)` 
-            // ACHTUNG: Ich habe den Text hier gekürzt für die Übersicht. 
-            // Du musst deinen vollen Text hier wieder reinkopieren!
+            // !!! ACHTUNG: Hier wieder deinen vollen Text einfügen !!!
         },
         {
             id: 2,
@@ -501,13 +487,9 @@
             title: 'The "Journalist"',
             content: `After dinner, Lucas first walked Jon and Ari back to their suite... (Hier Text Kap 3)`
         }
-        // Um ein neues Kapitel hinzuzufügen, hier einfach ein Komma setzen und den Block kopieren:
-        // { id: 4, number: "Chapter Four", title: "Titel", content: `Text` }
     ];
 
-    /* === FRAGEN ZUM KAPITEL === 
-       Hier kannst du Fragen für jedes Kapitel definieren.
-    */
+    /* === FRAGEN === */
     const chapterQuestions = {
         1: [
             { id: 'ch1_q1', label: 'Lucas nennt Jon und Ari seine "extra dads". Glaubst du ihnen die Nähe?', type: 'text' },
@@ -521,26 +503,22 @@
             { id: 'ch3_q1', label: 'Das Treffen am Pool: Knistert es zwischen Lucas und dem Schwimmer?', type: 'text' },
             { id: 'ch3_final', label: '🌟 Würdest du nach diesen 3 Kapiteln das Buch kaufen?', type: 'emoji', emojis: ['👎', '😐', '🤔', '👍', '💸'] }
         ]
-        // Für Kapitel 4 einfach: 
-        // 4: [ { id: '...', label: '...', type: 'text' } ]
     };
 
-    // Standardfragen, die immer kommen
     const standardQuestions = [
         { id: 'feeling', label: 'Wie hat sich dieses Kapitel angefühlt?', type: 'emoji', emojis: ['😴', '😐', '🙂', '😊', '🤩'] },
         { id: 'hooked', label: 'Lieblingsmoment?', type: 'text' }
     ];
 
     /* ================================================================
-       === LOGIC (AB HIER NICHTS ÄNDERN, WENN NICHT NÖTIG) ===
+       === APP LOGIC ===
        ================================================================ */
 
     let currentChapter = 1;
     let completedChapters = [];
-    let highlights = {}; // Format: { 1: [], 2: [] }
+    let highlights = {};
     let questionnaires = {}; 
     
-    // Initial State Setup
     chapters.forEach(c => {
         if (!highlights[c.id]) highlights[c.id] = [];
         if (!questionnaires[c.id]) questionnaires[c.id] = {};
@@ -550,11 +528,9 @@
     let currentSelection = null;
     let editingHighlightId = null;
 
+    // init() wird jetzt von checkPassword() aufgerufen, nicht mehr automatisch!
     function init() {
         loadState();
-        if (localStorage.getItem('leseraum_started')) {
-            document.getElementById('welcomeScreen').classList.add('hidden');
-        }
         renderProgressBar();
         renderChapter();
     }
@@ -588,24 +564,18 @@
             let status = 'locked';
             if (c.id === currentChapter) status = 'current';
             else if (completedChapters.includes(c.id)) status = 'completed';
-            else if (c.id === 1 || completedChapters.includes(c.id - 1)) status = 'unlocked'; // Allow clicking next if previous done
+            else if (c.id === 1 || completedChapters.includes(c.id - 1)) status = 'unlocked';
 
-            // Linie nur wenn nicht der letzte
             const line = i < chapters.length - 1 
                 ? `<div class="progress-line ${completedChapters.includes(c.id) ? 'completed' : ''}"></div>` 
                 : '';
 
             return `
-                <div class="progress-dot ${status}" 
-                     onclick="goToChapter(${c.id})"
-                     id="dot-${c.id}">
-                     ${c.id}
-                </div>
+                <div class="progress-dot ${status}" onclick="goToChapter(${c.id})" id="dot-${c.id}">${c.id}</div>
                 ${line}
             `;
         }).join('');
         
-        // Scroll to active dot on mobile
         setTimeout(() => {
             const active = document.querySelector('.progress-dot.current');
             if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
@@ -613,15 +583,14 @@
     }
 
     function goToChapter(id) {
-        // Navigation Logic: Allow going back, or going to next unlocked
         if (id === currentChapter) return;
-        const targetIndex = chapters.findIndex(c => c.id === id);
         if (id > 1 && !completedChapters.includes(id - 1) && id > currentChapter) return;
-
         currentChapter = id;
         saveState();
         renderChapter();
         renderProgressBar();
+        // Auf Mobile Sidebar schließen wenn man wechselt
+        document.getElementById('sidebar').classList.remove('visible');
     }
 
     function renderChapter() {
@@ -629,15 +598,12 @@
         document.getElementById('chapterNumber').textContent = ch.number;
         document.getElementById('chapterTitle').textContent = ch.title;
         
-        // Content rendering
-        const paragraphs = ch.content.split(/\n\n+/).filter(p => p.trim());
-        const html = paragraphs.map((p, i) => {
+        const html = ch.content.split(/\n\n+/).filter(p => p.trim()).map((p, i) => {
             if (p.trim() === '❦') return '<div class="scene-break">❦</div>';
             return `<p id="p-${i}">${p.trim()}</p>`;
         }).join('');
         
         document.getElementById('manuscript').innerHTML = html;
-        
         applyHighlights();
         updateStats(ch.content);
         window.scrollTo(0, 0);
@@ -646,39 +612,39 @@
     function updateStats(content) {
         const words = content.split(/\s+/).length;
         document.getElementById('wordCount').textContent = words.toLocaleString();
-        document.getElementById('readTime').textContent = `~${Math.ceil(words / 220)} min`;
+        document.getElementById('readTime').textContent = `~${Math.ceil(words / 200)} min`;
         document.getElementById('markCount').textContent = highlights[currentChapter] ? highlights[currentChapter].length : 0;
     }
 
-    // === HIGHLIGHTING LOGIC (FIXED) ===
+    // === HIGHLIGHTING ===
     document.addEventListener('mouseup', handleSelection);
+    document.addEventListener('touchend', handleSelection); // Support für Mobile Touch
 
     function handleSelection(e) {
         if (e.target.closest('.popup') || e.target.closest('.sidebar') || e.target.closest('.questionnaire-container')) return;
         
-        const selection = window.getSelection();
-        const text = selection.toString().trim();
-        
-        if (text.length > 2) {
-            const container = document.getElementById('manuscript');
-            // Check if selection is inside manuscript
-            if (container.contains(selection.anchorNode)) {
-                currentSelection = { text: text };
-                editingHighlightId = null;
-                openPopup(text);
+        // Timeout für Mobile Selection Handling
+        setTimeout(() => {
+            const selection = window.getSelection();
+            const text = selection.toString().trim();
+            
+            if (text.length > 2) {
+                const container = document.getElementById('manuscript');
+                if (container.contains(selection.anchorNode)) {
+                    currentSelection = { text: text };
+                    editingHighlightId = null;
+                    openPopup(text);
+                }
             }
-        }
+        }, 10);
     }
 
     function openPopup(text, comment = '') {
         document.getElementById('popupQuote').textContent = `"${text.substring(0, 100)}..."`;
         document.getElementById('popupComment').value = comment;
         document.getElementById('btnDelete').style.display = editingHighlightId ? 'block' : 'none';
-        
-        // Reset category
         document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('selected'));
         selectedCategory = null;
-
         document.getElementById('overlay').classList.add('visible');
         document.getElementById('popup').classList.add('visible');
     }
@@ -697,15 +663,12 @@
 
     function saveHighlight() {
         if (!selectedCategory) { alert('Bitte wähle eine Kategorie!'); return; }
-        
         const comment = document.getElementById('popupComment').value;
         
         if (editingHighlightId) {
-            // Edit existing
             const h = highlights[currentChapter].find(x => x.id === editingHighlightId);
             if (h) { h.category = selectedCategory; h.comment = comment; }
         } else {
-            // New
             highlights[currentChapter].push({
                 id: Date.now(),
                 text: currentSelection.text,
@@ -733,30 +696,18 @@
     }
 
     function applyHighlights() {
-        // Simple but robust replacement
         const container = document.getElementById('manuscript');
-        // Reset to clean state (from chapters data) to avoid nesting spans messily
         const ch = chapters.find(c => c.id === currentChapter);
         
-        // Re-render raw paragraph HTML first
         let html = ch.content.split(/\n\n+/).filter(p => p.trim()).map(p => {
              if (p.trim() === '❦') return '<div class="scene-break">❦</div>';
              return `<p>${p.trim()}</p>`;
         }).join('');
 
-        // Apply highlights string-based (Reverse order to handle potential overlaps simply? No, standard replace is safer for now)
-        // Note: This simple approach assumes unique text snippets. 
-        // For a pro tool, we'd use Range offsets, but for this file-based tool, string match is easier to maintain.
         const marks = highlights[currentChapter] || [];
-        
         marks.forEach(h => {
-            // Escape special regex chars
             const escapedText = h.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            // Replace ONLY the first occurrence to avoid messing up if text repeats? 
-            // Or all? Let's do first for safety in context.
-            const regex = new RegExp(`(${escapedText})`, 'i'); // Case insensitive
-            
-            // We search in the whole HTML. This is risky if marks span tags, but acceptable for this use case.
+            const regex = new RegExp(`(${escapedText})`, 'i'); 
             html = html.replace(regex, `<span class="highlight ${h.category}" onclick="editMark(${h.id}, event)">$1</span>`);
         });
 
@@ -764,7 +715,8 @@
     }
 
     function editMark(id, e) {
-        e.stopPropagation(); // Don't trigger new selection
+        e.stopPropagation();
+        e.preventDefault();
         const h = highlights[currentChapter].find(x => x.id === id);
         if (h) {
             editingHighlightId = id;
@@ -774,11 +726,10 @@
         }
     }
 
-    // === SIDEBAR ===
+    // === SIDEBAR & UI ===
     function toggleSidebar() {
-        const sb = document.getElementById('sidebar');
-        sb.classList.toggle('visible');
-        if (sb.classList.contains('visible')) renderMarksList();
+        document.getElementById('sidebar').classList.toggle('visible');
+        if (document.getElementById('sidebar').classList.contains('visible')) renderMarksList();
     }
 
     function renderMarksList() {
@@ -786,7 +737,7 @@
         const marks = highlights[currentChapter] || [];
         
         if (marks.length === 0) {
-            list.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:2rem;">Noch keine Markierungen in diesem Kapitel.</div>';
+            list.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:2rem;">Noch keine Markierungen.</div>';
             return;
         }
 
@@ -825,12 +776,12 @@
         container.innerHTML = html;
         document.getElementById('questionnaireContainer').classList.add('visible');
 
-        // Restore answers
         const saved = questionnaires[currentChapter] || {};
         Object.keys(saved).forEach(key => {
             const el = document.querySelector(`[data-qid="${key}"]`);
             if (el) el.value = saved[key];
-            // Emojis restore logic could be added here similar to prev version
+            const btn = document.querySelector(`.emoji-btn[data-qid="${key}"][data-val="${saved[key]}"]`);
+            if(btn) btn.classList.add('selected');
         });
     }
 
@@ -840,7 +791,7 @@
                 <div style="margin-bottom:1.5rem;">
                     <label style="display:block; margin-bottom:0.5rem;">${q.label}</label>
                     <div class="emoji-scale">
-                        ${q.emojis.map(e => `<button class="emoji-btn" onclick="saveAnswer('${q.id}', '${e}', this)">${e}</button>`).join('')}
+                        ${q.emojis.map(e => `<button class="emoji-btn" data-qid="${q.id}" data-val="${e}" onclick="saveAnswer('${q.id}', '${e}', this)">${e}</button>`).join('')}
                     </div>
                 </div>`;
         }
@@ -868,11 +819,9 @@
         saveState();
         document.getElementById('questionnaireContainer').classList.remove('visible');
         
-        // Export Logic Trigger
         if (currentChapter === chapters.length) {
             downloadJSON();
         } else {
-            // Next chapter
             goToChapter(currentChapter + 1);
         }
         renderProgressBar();
@@ -888,23 +837,19 @@
                 answers: questionnaires
             }
         };
-
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
-        
-        // Force download via temporary link
         const a = document.createElement('a');
         a.href = url;
         a.download = `RichterScale_Feedback_Chap1-${currentChapter}.json`;
-        document.body.appendChild(a); // Append to body to ensure click works
+        document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a); // Cleanup
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        
-        alert("🎉 Danke! Deine Feedback-Datei wurde heruntergeladen. Bitte sende sie mir zu!");
+        alert("🎉 Danke! Bitte sende mir die heruntergeladene Datei.");
     }
 
-    init();
+    // ACHTUNG: Hier KEIN init() Aufruf mehr. Das passiert jetzt erst nach dem Passwort-Check!
     </script>
 </body>
 </html>
