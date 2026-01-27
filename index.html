@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Leseraum – The Richter Scale</title>
+    <title>The Richter Scale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -25,13 +25,30 @@
             --gold-dim: rgba(212, 168, 83, 0.15);
             --gold-border: rgba(212, 168, 83, 0.4);
             
-            /* Highlight Farben */
-            --cat-love: #e88a9c; --cat-love-bg: rgba(232, 138, 156, 0.3);
-            --cat-funny: #7dd3a8; --cat-funny-bg: rgba(125, 211, 168, 0.3);
-            --cat-tension: #e07b54; --cat-tension-bg: rgba(224, 123, 84, 0.3);
-            --cat-ship: #d477b8; --cat-ship-bg: rgba(212, 119, 184, 0.3);
-            --cat-confused: #7ba3d4; --cat-confused-bg: rgba(123, 163, 212, 0.3);
-            --cat-boring: #8a8a8a; --cat-boring-bg: rgba(138, 138, 138, 0.3);
+            /* Highlight Farben - Neue Palette */
+            /* Stil (Gold) */
+            --cat-style: #d4a853; 
+            --cat-style-bg: rgba(212, 168, 83, 0.25);
+            
+            /* Spannung (Ziegelrot/Orange) */
+            --cat-tension: #bf5b45; 
+            --cat-tension-bg: rgba(191, 91, 69, 0.25);
+            
+            /* Charakter (Dunkelblau/Indigo) */
+            --cat-char: #5b7db1; 
+            --cat-char-bg: rgba(91, 125, 177, 0.25);
+            
+            /* Atmosphäre (Petrol/Teal) */
+            --cat-atmo: #459a96; 
+            --cat-atmo-bg: rgba(69, 154, 150, 0.25);
+            
+            /* Logik/Frage (Grau-Lila) */
+            --cat-logic: #9b8dbf; 
+            --cat-logic-bg: rgba(155, 141, 191, 0.25);
+            
+            /* Pacing (Olive/Matt) */
+            --cat-pacing: #8a8a8a; 
+            --cat-pacing-bg: rgba(138, 138, 138, 0.25);
 
             --font-serif: 'Crimson Pro', Georgia, serif;
             --font-sans: 'Outfit', system-ui, sans-serif;
@@ -190,12 +207,12 @@
             border-bottom: 2px solid transparent;
             -webkit-box-decoration-break: clone; box-decoration-break: clone;
         }
-        .highlight.love { background: var(--cat-love-bg); border-bottom-color: var(--cat-love); }
-        .highlight.funny { background: var(--cat-funny-bg); border-bottom-color: var(--cat-funny); }
+        .highlight.style { background: var(--cat-style-bg); border-bottom-color: var(--cat-style); }
         .highlight.tension { background: var(--cat-tension-bg); border-bottom-color: var(--cat-tension); }
-        .highlight.ship { background: var(--cat-ship-bg); border-bottom-color: var(--cat-ship); }
-        .highlight.confused { background: var(--cat-confused-bg); border-bottom-color: var(--cat-confused); }
-        .highlight.boring { background: var(--cat-boring-bg); border-bottom-color: var(--cat-boring); }
+        .highlight.char { background: var(--cat-char-bg); border-bottom-color: var(--cat-char); }
+        .highlight.atmo { background: var(--cat-atmo-bg); border-bottom-color: var(--cat-atmo); }
+        .highlight.logic { background: var(--cat-logic-bg); border-bottom-color: var(--cat-logic); }
+        .highlight.pacing { background: var(--cat-pacing-bg); border-bottom-color: var(--cat-pacing); }
         .highlight:hover { filter: brightness(1.2); }
 
         /* Popup Components */
@@ -237,12 +254,12 @@
         .cat-btn .emoji { font-size: 1.4rem; }
         .cat-btn.selected { background: var(--gold-dim); border-color: var(--gold); }
         /* Specific colors */
-        .cat-btn.love.selected { background: var(--cat-love-bg); border-color: var(--cat-love); color: var(--cat-love); }
-        .cat-btn.funny.selected { background: var(--cat-funny-bg); border-color: var(--cat-funny); color: var(--cat-funny); }
+        .cat-btn.style.selected { background: var(--cat-style-bg); border-color: var(--cat-style); color: var(--cat-style); }
         .cat-btn.tension.selected { background: var(--cat-tension-bg); border-color: var(--cat-tension); color: var(--cat-tension); }
-        .cat-btn.ship.selected { background: var(--cat-ship-bg); border-color: var(--cat-ship); color: var(--cat-ship); }
-        .cat-btn.confused.selected { background: var(--cat-confused-bg); border-color: var(--cat-confused); color: var(--cat-confused); }
-        .cat-btn.boring.selected { background: var(--cat-boring-bg); border-color: var(--cat-boring); color: var(--cat-boring); }
+        .cat-btn.char.selected { background: var(--cat-char-bg); border-color: var(--cat-char); color: var(--cat-char); }
+        .cat-btn.atmo.selected { background: var(--cat-atmo-bg); border-color: var(--cat-atmo); color: var(--cat-atmo); }
+        .cat-btn.logic.selected { background: var(--cat-logic-bg); border-color: var(--cat-logic); color: var(--cat-logic); }
+        .cat-btn.pacing.selected { background: var(--cat-pacing-bg); border-color: var(--cat-pacing); color: var(--cat-pacing); }
 
         .popup-textarea {
             width: 100%; min-height: 80px; padding: 0.8rem;
@@ -295,12 +312,12 @@
             margin-bottom: 0.7rem; border-left: 3px solid transparent;
             cursor: pointer; transition: all 0.15s ease;
         }
-        .mark-card.love { border-left-color: var(--cat-love); }
-        .mark-card.funny { border-left-color: var(--cat-funny); }
+        .mark-card.style { border-left-color: var(--cat-style); }
         .mark-card.tension { border-left-color: var(--cat-tension); }
-        .mark-card.ship { border-left-color: var(--cat-ship); }
-        .mark-card.confused { border-left-color: var(--cat-confused); }
-        .mark-card.boring { border-left-color: var(--cat-boring); }
+        .mark-card.char { border-left-color: var(--cat-char); }
+        .mark-card.atmo { border-left-color: var(--cat-atmo); }
+        .mark-card.logic { border-left-color: var(--cat-logic); }
+        .mark-card.pacing { border-left-color: var(--cat-pacing); }
 
         /* Footer */
         .footer {
@@ -346,21 +363,21 @@
         <div class="welcome-content">
             <div style="font-size: 4rem; margin-bottom: 1.5rem;">📖</div>
             <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Willkommen im 
-                <span style="color:var(--gold)">Leseraum</span>
+                
             </h1>
             <p style="font-family: var(--font-sans); color: var(--text-secondary); margin-bottom: 2rem;">
                 Hey! Danke, dass du dir Zeit für "The Richter Scale" nimmst. 
-                Du kannst beim Lesen Text markieren, um mir deine Reaktionen zu zeigen.
+                Du kannst beim Lesen Text markieren, um mir deine Reaktionen zu zeigen - das ist aber völlig optional, also du kannst auch einfach nur lesen und gar nichts markieren. Am Ende jedes Kapitels würde ich dich bitten, dass du oben rechts auf "Fertig" klickst; dann öffnet sich ein Feedback-Fragebogen, den brauche ich, damit ich weiß, wo ich noch nachbessern kann 😅 Dein Browser sollte den automatisch herunterladen - im ersten Durchlauf erst, nachdem du Kapitel 3 beendet hast - und dann schickst du mir die Datei mit .json am Ende, die kann ich auslesen und dann weiter tüfteln. Vielen Lieben Dank für deine Zeit! 
             </p>
             <button class="btn btn-primary" style="padding: 0.9rem 2.5rem;" onclick="startReading()">
-                Los geht's! 🚀
+                Auf geht's!
             </button>
         </div>
     </div>
 
     <header class="header">
         <div class="header-inner">
-            <div class="logo">Leseraum <span>• The Richter Scale</span></div>
+            <div class="logo"> <span>• The Richter Scale</span></div>
             <div class="header-controls">
                 <button class="btn" onclick="toggleSidebar()">💬 Marks</button>
                 <button class="btn btn-primary" onclick="openQuestionnaire()">Fertig ✓</button>
@@ -385,12 +402,24 @@
     <div class="popup" id="popup">
         <div class="popup-quote" id="popupQuote"></div>
         <div class="category-grid">
-            <button class="cat-btn love" onclick="selectCategory('love')"><span class="emoji">💕</span>Gepackt</button>
-            <button class="cat-btn funny" onclick="selectCategory('funny')"><span class="emoji">😂</span>Witzig</button>
-            <button class="cat-btn tension" onclick="selectCategory('tension')"><span class="emoji">🔥</span>Spannung</button>
-            <button class="cat-btn ship" onclick="selectCategory('ship')"><span class="emoji">😍</span>Ship it</button>
-            <button class="cat-btn confused" onclick="selectCategory('confused')"><span class="emoji">❓</span>Verwirrt</button>
-            <button class="cat-btn boring" onclick="selectCategory('boring')"><span class="emoji">😴</span>Länge</button>
+            <button class="cat-btn style" onclick="selectCategory('style')">
+                <span class="emoji">✒️</span>Stil
+            </button>
+            <button class="cat-btn tension" onclick="selectCategory('tension')">
+                <span class="emoji">⚡</span>Spannung
+            </button>
+            <button class="cat-btn char" onclick="selectCategory('char')">
+                <span class="emoji">🎭</span>Charakter
+            </button>
+            <button class="cat-btn atmo" onclick="selectCategory('atmo')">
+                <span class="emoji">🌫️</span>Atmosphäre
+            </button>
+            <button class="cat-btn logic" onclick="selectCategory('logic')">
+                <span class="emoji">❔</span>Logik?
+            </button>
+            <button class="cat-btn pacing" onclick="selectCategory('pacing')">
+                <span class="emoji">⏳</span>Pacing
+            </button>
         </div>
         <textarea class="popup-textarea" id="popupComment" placeholder="Gedanken dazu? (optional)"></textarea>
         <div style="display:flex; justify-content:space-between; margin-top:1rem;">
@@ -427,40 +456,32 @@
        === 🔐 SICHERHEITSEINSTELLUNGEN ===
        ================================================================ */
     
-    // Das Passwort für deine Betaleserin. Ändere es hier.
-    const SECRET_PASSWORD = "Richter2024"; 
+    const SECRET_PASSWORD = "TRS2026"; 
 
     function checkPassword() {
         const input = document.getElementById('passwordInput').value;
         const error = document.getElementById('loginError');
         
         if (input === SECRET_PASSWORD) {
-            // Passwort richtig: Login ausblenden, App starten
             document.getElementById('loginScreen').classList.add('hidden');
-            
-            // Prüfen ob Welcome Screen schon mal gesehen wurde
             if (!localStorage.getItem('leseraum_started')) {
                 document.getElementById('welcomeScreen').classList.remove('hidden');
             }
-            
-            // App initialisieren
             init();
         } else {
-            // Passwort falsch
             error.classList.add('visible');
             document.getElementById('passwordInput').value = '';
             setTimeout(() => error.classList.remove('visible'), 2000);
         }
     }
 
-    // Enter-Taste Support für Passwort
     document.getElementById('passwordInput').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') checkPassword();
     });
 
 
     /* ================================================================
-       === INHALT (KAPITEL) ===
+       === INHALT (KAPITEL & FRAGEN) ===
        ================================================================ */
 
     const chapters = [
@@ -468,36 +489,257 @@
             id: 1,
             number: "Chapter One",
             title: '"How Fast Can You Get To Zurich?"',
-            content: `Lucas Castro was jogging his usual route along the Schuylkill River... (Hier deinen vollen Text einfügen)` 
+            content: `
+<p class="ps3"><span class="s1">Lucas Castro was jogging his usual route along the Schuylkill River, his breathing controlled and steady. At the same time, he was listening attentively to a finance podcast he’d only discovered the evening before. </span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The promenade was quiet, and the skyline of Center City on the opposite bank was wrapped in that familiar layer of fog which, he knew, would dissolve within the next half hour. June mornings like this always felt like a gift to him, and as he neatly split his thoughts between listening and the quiet gratitude of being able to run before class, the podcast cut out mid-sentence—interrupted by an incoming call.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>He slowed to a more comfortable pace and fished his phone out of the armband it was strapped into. </span><em><span class="s2">Jon Carver</span></em><span class="s1">’s name lit up the display.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Hey, old man. What’s up?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon ignored the provocation. “How fast can you get to Zurich?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The question slowed Lucas even more. He blinked, felt the blood rush from his legs to his brain. “Zurich. Seriously?” </span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“There’s a leak,” Jon said. “The Swiss press somehow got hold of internal documents—they’re framing it as tax evasion and claiming I restructured holdings to get ahead of a change in tax law.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas came to a stop at that. The world around him didn’t. Cyclists passed him, as did mothers with strollers, and in the background the river still glittered innocently in the morning light. He focused immediately. “Do they have anything on you? Any criminal activity?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Not even remotely. But it looks like someone fed them just enough material to make it seem intentional. Which means headlines and a certain amount of… legal pressure.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“What about the Swiss financial regulator? FINMA, right?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Not officially involved yet. No frozen accounts, no subpoenas—but plenty of speculation. The documents themselves are real, though incomplete and taken out of context. And someone must have handed them over.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas rubbed the palm of his hand over his black undercut, his gray eyes narrowing at the same time. “So this isn’t a legal emergency.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“No,” Jon said calmly. “This is about my reputation. And storms like this have a tendency to draw the government’s attention if you don’t keep them under control.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span> Lucas had already turned around and started jogging back. “What exactly do you need from me?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“I need a clean, internal reconstruction of what was seen—and what wasn’t. You know my structures, but you’re not on any boards.” Jon exhaled audibly. “And I want you to get your first real experience outside the lecture hall. I want you to see how we work. For… </span><em><span class="s2">later</span></em><span class="s1"> in your career.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The corner of Lucas’ mouth twitched. Jon Carver’s version of trust. “You think someone did this very deliberately.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“I don’t believe in coincidences,” Jon said. “Especially not ones that are timed this well.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“I only had European tax law this spring,” Lucas replied quietly, “my worst grade so far at just ninety percent.” The thought still irritated him; he breathed out heavily. “What about your other offices—Singapore? London? Any impact?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“No. Everything’s secure there. This is Switzerland only, and—for now—just headlines. That’s why I need Ari as much as I need you. But most of all, I want to know who gave them the story.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas had to grin at the thought of Ari, Jon’s husband. He veered toward Walnut Street, the blood rushing in his ears louder than any river or street noise ever could. “There’s only one flight I could take,” he said, searching for it mid-run, “Philly to Zurich, nonstop. But only in First.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Book it. We’ll meet you there.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The line went dead. Lucas slowed, just enough for his breathing to settle. </span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Then he sprinted toward Rittenhouse Square, already running through his packing list in his head, determined not to screw this up. </span></p>
+<div class="scene-break">❦</div>
+<p class="ps6"><span class="s1">Lucas repurposed his private cabin—with its absurd amount of legroom and a seat he could have fit into twice over—into an aerial office and used the flight to get a clearer picture of the precise circumstances Jon had been pulled into, a task he found himself genuinely glad to take on.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>He traced how Switzerland had built its reputation as a tax haven—and how, in recent years, it had just as persistently tried to shake that very image again.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas nodded as he read through the new regulations, which sounded almost reasonable on paper: investors were given six months to disclose the origin of every single cent they held in Switzerland.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>In practice, however, things looked very different.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The banks were the problem, Lucas concluded, biting his lip. Because now the banks were forced to ask their most valuable clients uncomfortable questions about assets that went back decades—and the same applied to family offices like Jon’s.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon had layered, reinvested, shifted, and shielded his European assets over the course of years—resulting in a paper trail so nightmarish that it was impossible to reconstruct it cleanly within a matter of months. None of it was illegal; the sheer volume was simply overwhelming.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Someone had exploited exactly that fact to plant the idea in Jon’s primary bank that he had something to hide.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon wasn’t that kind of financier—the notion alone was absurd and made Lucas knit his brows.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Thoughtfully, he chewed on his pen. The discretion of the Swiss family office had become a problem here; the ‘shield’ strategy Jon had relied on for decades suddenly looked suspicious in the light of the new law.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon had lawyers and analysts in his family office who would take on that challenge.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas’ role would be to sit one level above them—and to learn how problems like this were handled at that altitude.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The first time he would be working with Jon and Ari instead of merely watching them.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The first time he would have to prove himself.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Grim determination narrowed Lucas’ eyes—he would not disappoint anyone here. Not Ari. Not Jon. And certainly not himself.</span></p>
+<div class="scene-break">❦</div>
+<p class="ps6"><span class="s1">Jon and Ari stood by a pillar in the arrivals area of Zurich Airport, positioned so they would be easy to find. Lucas would have found them regardless; their respective auras were practically impossible to miss.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon’s deeply tanned arm—courtesy from the Oaxacan sun—rested loosely around Ari’s waist. Lucas had to tilt his head up slightly to meet his gaze, even though he wasn’t short himself; he always felt a little small when he did.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari, by contrast, wore his tan more softly. His face hovered halfway toward a grin that fully bloomed the moment he spotted Lucas. His entire body leaned forward, as if he couldn’t help himself.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>A familiar weight—one that felt suspiciously like attachment—settled in Lucas' chest. Fueled by First Class espresso, light on his feet, he walked toward them, pulling his suitcase behind him.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>It was obvious Jon had teased Ari beforehand. His body language gave it away; Ari’s energy was too electric, too reactive—that kind of tension that only formed when Jon had needled him minutes earlier.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon pulled him into a firm, wordless hug. Brief, but deliberate.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Then Ari joined them—softer, faster, exhaling sharply as he wrapped his arms around Lucas' shoulders and held him for a second too long.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Okay, okay—let me breathe,” Lucas laughed, his voice low, a grin he couldn’t suppress. “My extra dads. You’re both ridiculous.” </span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon cleared his throat, his classic retreat when emotions threatened to leak through. “We’re so glad you could come on such short notice,” he said, his voice lower than usual.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas rolled his suitcase along beside him as they stepped out into the gentle Zurich morning. Behind them, the terminal’s automatic doors hissed shut. “Of course I came,” he said lightly. “My family’s in trouble.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>They walked in silence for a while, Ari a few meters ahead, visibly unimpressed by the </span><em><span class="s2">Uetliberg</span></em><span class="s1"> in the background, before Lucas asked, “So… did the panic start when the numbers dropped, or when your name appeared?” He threw Jon a casual but pointed look.</span></p>
+<p class="ps4"><span class="s1"> Instead of answering, Jon tilted his head slightly, his gaze focused. Ari stayed quiet too, but Lucas could feel that he was listening.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Only once they were in the taxi, weaving through the calm geometry of Zurich traffic, did Lucas allow the tension in his shoulders to ease. The interior smelled of leather and lemon wipes. Clean, restrained, clinical, unobtrusive. Very Swiss. “Where are we staying?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon didn’t even look up from his phone. “Here. Temporarily, until we have a clearer picture. Then it’s off to St. Moritz, probably for a week.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari turned toward him, his mouth crooked mischievously. “Maxwell and André land tomorrow.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas raised his eyebrows. “They’re coming too?” A small flame spread in his chest. The English lord and the French art lover were honorary uncles by now and never showed up anywhere without flair. Sometimes a little too much flair—but Lucas couldn’t wait to see them.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon laughed dryly. “Maxwell called yesterday. He saw my name on the list of affected investors and offered his help—which, in Maxwell-speak, means quietly protecting his own exposure while pretending to be generous. He also wants to see how I get my ass out of the line of fire.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“And André,” Ari added, “shows up wherever there’s chaos. And right now, the biggest chaos just happens to be here.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas nodded. “Yeah. It’s bad. Who else is caught up in this?” </span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Only Lucas’ years-long relationship with Jon allowed him to notice his expression darken. “Pretty much every major player in Europe. And I despise them all. Power-hungry old bastards with wives half their age and the emotional intelligence of an ashtray.” The small emotional outburst was revealing. “Still, I’m not letting them ruin my vacation.” He reached for Ari and pulled him closer.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari turned to him, incredulous. “Vacation?! Carver, this financial scandal is hanging over your head like a balloon about to burst, your European operations are under public attack, and you’re calling this a vacation?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon pulled him even closer. “Absolutely,” he said gently. “We’re together.” Ari melted into the embrace. “The money is—almost—irrelevant to me. As long as I know no one’s putting you in their cross-hairs, I can deal with anything.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari blushed. “Fucking romantic,” he whispered, resting his head against Jon’s shoulder.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Up front, Lucas pretended he hadn’t heard a word of it—though he couldn’t quite suppress his smile.</span></p>
+
+</div>
+</body>
+` 
             // !!! ACHTUNG: Hier wieder deinen vollen Text einfügen !!!
         },
         {
             id: 2,
             number: "Chapter Two",
-            title: '"Influence"',
-            content: `They drove to the Dolder Grand. Even the hotel's driveway... (Hier Text Kap 2)`
+            title: 'Influence',
+            content: `<p class="ps3"><span class="s1">They drove to the </span><em><span class="s2">Dolder Grand.</span></em><span class="s1"> Even the hotel’s driveway was impressive: a long, sweeping road lined with meticulously maintained greenery and quiet forest, giving Lucas the feeling that he was arriving at a private estate rather than a hotel. The lobby—a composition of dark wood, modern design, art installations, and historical details—radiated a hushed kind of wealth that sent a shiver down Lucas' spine.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>After handing his luggage to a bellhop who seemed to materialize out of nowhere (and just as discreetly vanished again), and checking in—not at a counter, but at an individual desk—he followed Jon and Ari into the elevator, up to their suite.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon and Ari’s suite was absurd: a mountain view, designer furniture, fresh orchids, and a coffee table laid out with Swiss chocolate and mineral water.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari sank down onto one of the cream-colored sofas and slipped back into his corporate-fixer grin—the smile that had once closed billion-dollar deals in boardrooms full of men who all underestimated him.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas dropped into the armchair opposite. “Have you already talked to the guy who handles your accounts here? Elias, right?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon nudged a box overflowing with printouts with his foot. “He sent everything he could get his hands on that quickly. And tried to make it sound helpful. Mostly he’s just panicking. And besides—he’s dying to meet you.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas wrinkled his nose. “Absolutely not my type. I can feel his desperation through the Excel sheets.” To avoid any further talk about Elias, he grabbed the top layer of documents and skimmed them. The connections and patterns fell into place, as always. “This whole reaction feels way too fast to me.” The next pages confirmed his skepticism. “Would any of this have looked suspicious, say, three months ago?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“No,” Jon said shortly.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas looked up. “Then this is constructed.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon nodded, his eyes dark. “That’s the same conclusion I came to.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas went on. “Who broke the story first? Who published the documents? Who benefits from this becoming public?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari jumped in immediately. “And how long until it escalates? Are we already talking about a real investigation, or just headlines for now? Who in Switzerland still owes us favors?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>As Jon answered their questions in a tight, efficient staccato, he pulled his phone from his pocket with a thumb that was already typing eagerly across the screen.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Finanz und Wirtschaft ran it at dawn. Tagesanzeiger had the documents an hour later. Coordinated,” he said to Lucas. “The immediate beneficiaries are every competing fund in Europe. The long-term beneficiaries are the regulators.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Then he turned to Ari, his focus shifting without losing momentum. “We have a forty-eight-hour window before this hardens and FINMA has to open an investigation—unless we buy time by finding out who wanted to piss on our leg. The major banks are already nervous.” He found the contact he was looking for, his thumb hovering over the name as his gaze swept over both of them. The commander briefing his team.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“This was a declaration of war. Lucas, I need the anatomy of the leak. Ari, we need allies. We’re not just riding out this storm,” his eyes went cold, “we’re finding out who kicked it off and sending one right back.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas was always a little intimidated when Jon slipped into this shark mode; it didn’t happen often, and every time Jon became this leaner, more precise version of himself, a chill ran down Lucas' spine.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon placed the call. “Elias,” he said curtly. Elias’s overeager babble was faintly audible over the speaker. “Yes, Lucas landed safely,” Jon said after a moment, flashing him a crooked grin.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Jon! Keep that guy away from me!” Lucas mouthed at him in horror.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“How far along are the lawyers?” Jon asked. “—Good. Then put the counterstatement online today and in print tomorrow.” He ended the call.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Meanwhile, Ari had been busy researching journalists. “Ready to see me in action, Carver?” he teased.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari made his first call, then a second. Whenever the topics turned delicate, he tugged at his shirt sleeves without ever losing his charm. On the contrary—he had so much of it that Lucas wondered why the smartphone didn’t simply explode.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Eventually, Ari struck gold. “Madeleine Marceau,” he breathed into the phone. Jon’s eyebrows drew together as he looked at his husband with a mixture of admiration and mild concern.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari leaned forward, elbows on his knees, and even though Madeleine couldn’t see him, his body language translated directly into his voice. She didn’t stand a chance. “Madeleine, my husband—” he said, locking eyes with Jon, mischievous, “—is right in the middle of this chaos. And I’ve heard you’re the best-informed voice in the city.” Ari leaned back. “So how does all of this fit together?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas and Jon could only sit there in silence while Ari squeezed information out of Madeleine like the last bit of toothpaste from a tube, punctuated only by the occasional mm-hm or ah.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Eventually, Lucas tore himself away and returned to the documents.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>When Ari finally ended the call with a curt “Talk soon, Madeleine,” he looked slightly out of breath. “Damn, can that woman talk. No wonder I ended up with her.” He ran a hand through his short blond hair. “So: the law came into force about ten days ago, and as a result, every major player in the region was reviewed. Your name came up early—but you’re far from the only one. Curran, Richter, and Zeiss are on the list too.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>At the name Richter, something flickered across Jon’s face.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas noticed it. “What was that?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“What was what?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas leaned forward slightly. His pulse had picked up with curiosity. “Ari said ‘Richter,’ and you flinched.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon hesitated. “I know him.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“How well?” Ari asked sharply.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon blew out his breath hard. “Well enough. Saul Richter was… my mentor. About ten years ago. After the inheritance, when I was still in my twenties and convinced I had something to prove.” He paused, and his entire demeanor shifted; his jaw tightened, and his voice—usually so controlled—dropped lower.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas became more than just curious. Jon never talked about the fortune he’d inherited, and everyone knew better than to ask. But Lucas decided to probe a little. “Please tell us, Jon. Tell us what he is to you.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon’s mouth pulled into a thin line. “I’d rather not. All you need to know is that Saul is someone I knew from back then.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari straightened in his chair. His mouth, moments ago still curved in a charming smile, was now nothing but a hard line. “Excuse me, Carver?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas flinched. Ari rarely spoke up like this, but when he did, the blend of indignation and authority could cut glass. He wanted answers from his husband—and he wanted them now. “I know you hate public bathrooms, that you drink your coffee black—which, given how much coffee you consume, isn’t exactly impressive—and that you sometimes skip leg day. But this?” We’ve been married for eight damn years, and this is the first time I’m hearing about it.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Because…” Jon exhaled audibly. “Oh, fuck it. I hate it when you talk to me like that, Crawford,” he said to Ari, whose expression softened immediately. “I didn’t tell you because it was my first failure. I felt… humiliated. And you know what that means for me.” He shot Ari another look, and Ari’s cheeks flushed at once.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas was smart enough not to dwell on that particular part of their dynamic. “And then?” he asked.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon stood and walked over to the window. “Saul took me under his wing.” He kept his back to them. “He approached me at a conference in Geneva, along with a few other young investors. And I think Maxwell did business with him too.” Finally, he turned around. “Saul had me invest in companies here in Switzerland that were under his supervision. For a while, everything ran very smoothly—and then suddenly, it didn’t.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“What happened? And don’t dodge me again, Carver.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“I won’t,” Jon smiled. “Not when you get that angry. The short version is: the money I’d made somehow—and to this day I don’t know exactly how he pulled it off—vanished practically overnight. I woke up one morning, and the team Saul and I had built together stopped taking my calls. The eight-figure sum in my portfolio was simply gone.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Fuck,” Lucas muttered. “That doesn’t fit you at all.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Because it isn’t me at all,” Jon said emphatically. “I still get angry thinking about it today. But what I feel now is nothing compared to back then. I dropped every illusion Saul had given me and switched my brain back on—the brain that had earned me the inheritance in the first place.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“What did you do?” Ari asked, eyebrows raised.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon returned to the seating area and dropped into the last free sofa. “I found the others he’d burned before me and talked to vultures even more aggressive than Saul. I mobilized all of them and got everything back within a month. And then I consciously chose to just forget the whole thing. I’d learned my lesson.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>A strange silence settled over the room, a silence Ari eventually seemed to find unbearable. He leaned closer. “Jon… how old were you then? Twenty-six?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Twenty-five,” his husband murmured.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“That’s insane. Don’t you dare feel guilty for being exploited. Saul fucked you over. End of story.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon said nothing, just sank deeper into the sofa.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas watched him closely. He’d known Jon for five years. He’d never seen him hesitate like this. Never seen him flinch.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“There’s more,” Jon said finally. “Things I haven’t talked about. About Saul. His wife—don’t even start. And the child… poor kid.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Saul has a child?” Lucas asked.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon nodded. “Bençe. Must’ve been eight or nine back then. Strange name, even for Switzerland. Saul and Flora wanted something unforgettable. So they named and treated their heir like a brand.” He rubbed his eyes. “Enough Richter talk. Where’s Maxwell with his Scotch when you need him?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The shift in Jon’s posture was unmistakable; a rare crack in his otherwise impenetrable façade. And for a brief moment, Lucas didn’t see the untouchable mentor, but the twenty-five-year-old Jon he’d just been talking about. The same mind that normally dissected financial data was now scanning the emotional architecture of the moment, and the result was that Jon didn’t need comfort, but support in rebuilding the wall. “Great idea,” Lucas said quickly, deliberately light in tone for exactly that reason. “I’m thirsty too.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“You’re twenty,” Jon replied dryly.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“We’re in Europe.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Good point,” Ari agreed, already getting up.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon shot them both a sharp look. “Seriously? I unpack my financial trauma, and all you want is alcohol?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“You started it!” Ari shot back with a grin.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon groaned. “Fine. Then let’s go downstairs. I need protein if I’m going to talk about Saul Richter again.” He scratched his chin. “That I even revealed this much. Not my style at all.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas was already on his feet. “So what do people even eat here?” he asked.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari’s eyes practically lit up. That particular spark that always appeared whenever food entered the conversation. “Oh, you’re going to love this,” he said, leaning in conspiratorially. “They call it rösti—golden potato fritters, crispy on the outside, wonderfully soft on the inside.” They left the suite and headed down the hallway toward the elevator. “The perfect base for something rich like veal—” the elevator started moving downward, “—in a creamy mushroom white-wine sauce. Ridiculously good.” Lucas raised an eyebrow, amused by the culinary outburst that clashed so neatly with the story simmering in the back of his mind.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Ari went on. “And then there’s cheese fondue. But not just any fondue: half Gruyère, half Vacherin. Thick, creamy, just the right bite. You dip fresh, crusty bread into it and suddenly forget all your problems.” He shot Jon a playful look. “Not that we have any problems, of course.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas leaned back. They had taken seats at a small table near the bar—dim lighting, just enough background noise to still feel sheltered—and ordered drinks. “Alright,” he said, “not quite tacos al pastor, but I’m listening.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>He slowly turned his cocktail glass between his fingers. “Saul has a son, right? How old is he now?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Nineteen, maybe twenty. Your age,” Jon replied. “Why?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Uh…” Lucas scratched the back of his head. “Just curious. He grew up so differently from me. I wonder what that does to someone, growing up like that.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Across from him, Ari’s hand froze mid-motion. His mouth, still half-curved from the food monologue, slowly closed. “Why are you thinking about him?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas shrugged. “I guess Saul is the kind of man who slams people like Jon into walls just to hear the sound it makes. I don’t know, I think you can’t just sidestep that specific kind of cruelty, because it embeds itself in the structure. If you grow up inside that…” He let the thought trail off.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“It does something to you, yes,” Jon said quietly. “You grow up under envy and hollow ambition; you don’t come out unscathed.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“You almost feel sorry for him,” Ari said, equally softly.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon didn’t answer right away. He reached for his napkin and ran his thumb along its edge, a movement too precise to be casual. “Almost.” The sharpness in his voice wasn’t loud, but it was enough to cut.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>A moment passed before Ari changed the subject. “When do André and Maxwell land tomorrow?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Midday,” Jon replied.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“And the plan?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“We go through the files again, line by line. Find everything that makes this less abstract. Then we pick them up.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Madeleine said she’d get back to us; she hinted at a contact who might be useful.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Jon nodded once. “Good. Then we’ll have something solid before we head to St. Moritz.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas looked up. “St. Moritz?” He blinked. “We’re leaving Zurich while everything’s still on fire here? As early as tomorrow?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“This,” Jon announced, “is just the opening skirmish. The real battle takes place in the mountains.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>His last sentence hung in the air. </span><em><span class="s2">The real battle takes place in the mountains.</span></em><span class="s1"> Lucas wasn’t sure whether Jon meant that metaphorically. And he wasn’t sure he wanted to ask.</span></p>
+`
         },
         {
             id: 3,
             number: "Chapter Three",
             title: 'The "Journalist"',
-            content: `After dinner, Lucas first walked Jon and Ari back to their suite... (Hier Text Kap 3)`
+            content: `<p class="ps3"><span class="s1">After dinner, Lucas first walked Jon and Ari back to their suite and took the box of documents with him. He wished them both a good night before heading to his own room, opening his laptop, and bracing himself for a long night.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>He put on his noise-cancelling headphones and played psybient music—deep frequencies, barely any vocals, exactly the kind of sound that reliably put him into a flow state.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>At first, he simply read and made occasional notes. The music had his head bobbing in rhythm, and with that rhythm came the first patterns in the numbers. He was chasing the answer to the question of what exactly the press had seen; what sense the out-of-context fragments of the leaked documents made when viewed as part of the whole picture.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Hours passed in a blurred stream of figures and calculations. Without realizing it, he worked through the entire night and only noticed how much time had passed when the sky shifted from black to dark blue.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The chance to sleep had come and gone. Lucas stretched and rolled the stiffness out of his shoulders. He would go over everything with Jon again later, but right now he needed something else: coffee. A smirk tugged at his mouth. Even if Jon wasn’t his biological father, Lucas had clearly inherited his love of strong coffee.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>He left his suite, headed to the lobby bar, ordered a cup, and rubbed his tired face while he waited. His mind was still running at full speed. The coffee helped, but he needed more: movement. He decided to take advantage of the amenities their hotel offered.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas accepted his coffee and looked up. “You do have a pool, right?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“We do,” the barista said cautiously. “It’s mainly intended for guests to relax.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“But you also have a proper one? Long enough for swimming?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“An outdoor pool. Fifty meters.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas smiled. “Nice. How do I get there?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>With the directions in mind, Lucas returned to his suite, grabbed a few things, and set off.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>In the early morning hours, Zurich felt less like a city and more like a system just booting up. The lake gleamed like polished glass, trams glided silently through intersections, and the church clocks chimed with an urgency that made Lucas straighten instinctively.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The warm June air carried the distant scent of fresh pastries and espresso, and for a moment Lucas simply enjoyed the walk and let it all wash over him.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The pool was almost empty. A single swimmer moved through the water with impressive precision, each stroke powerful yet fluid.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas slowed his steps and watched. The man’s execution was flawless, his technique unmistakably professional. This wasn’t casual training.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>At the end of the lane, the swimmer executed a perfect flip turn, vanished beneath the surface for a moment, then continued his lap. Sunlight danced on the water and caught in the smooth lines of his muscles as he moved. There was something fascinating about the absolute control of his movements; the way he cut through the water with complete ease was striking.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas, who had momentarily forgotten why he was even there, found himself staring at the pool’s edge. The man reached the end of his lane and surfaced directly in front of him. He paused, pushed his goggles up into his hair, and fixed Lucas with an unimpressed look.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span></span><em><span class="s2">“Was isch?”</span></em><span class="s1">he asked flatly.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas swallowed. The eyes. He had never seen eyes that green before. A green you’d expect to find in a painting—deep and rich, threaded with brown flecks that gave them even more depth.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The man had spoken in Swiss German—which Lucas didn’t understand—but the tone had been unmistakable. Lucas wasn’t the type to lose his footing over a striking pair of eyes or well-defined muscles. Paradoxically, his fatigue only fueled his ambition to make a good first impression here. “Not bad,” he said in English, offering a casual smile before tossing his towel onto the nearest lounger.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The swimmer seemed unimpressed and switched effortlessly into English. “I don’t need an audience.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Okay, got it. My bad.” For a moment, the other man just stared at him, as if weighing his next move. Then, without another word, he pulled his goggles back on and resumed his training. Lucas didn’t miss the way the swimmer hesitated briefly at the far end of the pool and turned slightly—just enough to glance in his direction.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Smirking, Lucas deliberately put on a show for the stranger. He slowly pulled his shirt over his head. Morning sunlight caught on his olive-toned skin. The sweatpants followed in one smooth motion, revealing long, lean muscle trained by years of running, sharpened by a naturally high metabolism and a healthy Mexican appetite. He knew how he looked. More importantly, he knew how to use it. Then, as if he hadn’t just drawn the swimmer’s attention, he headed for the showers, rinsed off, and slipped into the pool.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The cold water shocked away the last remnants of exhaustion as the caffeine kicked in. He took his time, gliding through the water in calm, even strokes. Every now and then, he glanced over at the other man, who remained focused, powering through lap after lap with an intensity that bordered on obsessive.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>After twenty minutes, Lucas had had enough. He climbed out of the water at the exact moment the other man did the same.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>They eventually stood side by side under the showers, silent but appraising each other. Their gazes met once, twice. Each time, one of them looked away quickly. It was almost funny—but there was something else in the air too, something heavier, more charged.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Finally, Lucas broke the tension. “What’s your name?” he asked casually, friendly. No answer. “Hello?” Lucas tried again.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The swimmer exhaled irritably and finally looked at him. “Wasn’t it clear enough that I didn’t want to answer?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas grinned—he loved challenges. Especially when the guy who posed them sent enough signals to be sure there was mutual attraction, while still making it difficult. And this particular man was a walking fortress of contradictions, and Lucas’ mind was already scanning for structural weaknesses in his defenses.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The other man just stared at him, unimpressed.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“I’m Lucas,” he offered, testing the waters.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The swimmer hesitated. His gaze slid over Lucas again, slow and assessing, but he still said nothing. Then, instead of answering, he asked flatly, “Are you Mexican?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas blinked, surprised. “Yes… why?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Something shifted in the swimmer’s expression. He froze for a brief moment, as if a wire had been pulled tight beneath his skin. Then it was gone. He gave Lucas one last look, grabbed his things abruptly, and turned to leave.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas was faster. He snatched up his own belongings and followed, keeping pace. “How did you know I’m from Mexico?” he asked now, genuinely curious. His years at Wharton had nearly erased his accent, and while his features might hint at his background, they weren’t distinctive enough to give him away so easily. So how the hell did this guy know?</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The other man didn’t answer. By now, it was clear they were heading for the same hotel.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas wasn’t ready to let it go. “Hey!” he called, speeding up. “You can’t just say something like that and then not explain.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Impressively green eyes looked back at him, cool and unmoved.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas felt irritation stir, but he forced himself to exhale slowly and let his analytical mind take over. “You don’t know me,” he said, watching him closely. “So you know the people I’m here with.” Lucas' heart was pounding in his throat. “Who are you? How do you know Jon Carver?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The man still said nothing. But his ears flushed red.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>That was enough for Lucas. He stepped into his path and planted his feet wide. “How do you know Jon?” he repeated. They were almost the same height—Lucas maybe had a few centimeters on him. They stood close enough that Lucas didn’t really mind the proximity, despite the other man’s rudeness, his arrogance, and his almost demonstrative silence.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>His skin prickled with something he couldn’t quite pin down. Something between attraction and annoyance at how much this guy was complicating a challenge Lucas normally enjoyed. It was a variable he couldn’t categorize, a data point that didn’t fit into any model in his head. This man was dismissive, uncooperative, and a potential threat.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>But the closeness didn’t feel dangerous. Quite the opposite; his body seemed more than ready to accept it.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>For a moment, there was only silence. Then the man spoke. “I’m supposed to keep an eye on him.” That was all he said.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas' eyebrows shot up. “What does ‘keep an eye on him’ mean? For whom?”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Again, no answer. Instead, the man took a step back and made an obvious attempt to get past him. By now, they had almost reached the hotel entrance.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas knew he was crossing a line, but he couldn’t help it. The situation was slipping away from him. The stranger was about to disappear—an unsolved variable in his equation. And if there was one thing Lucas couldn’t stand, it was helplessly watching himself lose control of an outcome. The impulse came before the thought; an action to restore order, however clumsy, and his exhaustion did the rest.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>He reached out and grabbed the other man’s wrist before he could pull away. The moment his fingers closed around the stranger, the other’s eyes snapped up at him in surprise. But he didn’t pull his hand back.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>And for a fleeting instant, Lucas felt something. Very soft skin with firm, clearly defined muscle beneath it. His mind raced, trying to process the input of this forbidden touch. Every system reported the same result.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Remembering that holding someone like that (no matter how absurdly good that skin felt) violated every socioethical standard he was committed to, he let go.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Sorry,” he murmured, rubbing his palm against his thigh.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The other man was still silent. But after a breath, he finally exhaled. “I’m a journalist,” he admitted. Lucas raised an eyebrow. “The entire Swiss media landscape is after Jon Carver right now,” the man continued. “I did my research beforehand. I knew he was connected to a young man named Lucas. That’s obviously you.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas nodded, processing the information. Bullshit was his first instinct. It made no sense. Jon had deliberately made sure never to mention Lucas or his biological family publicly, strictly for privacy reasons. He decided to test his hypothesis. “Wait—if you’re a journalist, then you know Madeleine Marceau? One of us—”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The reaction was immediate and, to Lucas' analytical mind, as clear as a red flag in a data set. A real journalist, catching the scent of a big story, would have recognized the name as bait. As a chance to establish a connection. He would have asked questions, shown interest. This guy did the exact opposite.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Before Lucas could finish the sentence, the other man had already turned away and headed for the hotel entrance. Flight. The most illogical move for a reporter—but the most logical for someone who’d just been caught in a lie.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“How rude,” Lucas muttered, more amused than annoyed.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Just before disappearing into the lobby, the man turned halfway around and gave him the faintest, most reluctant grin. It was barely there, almost imperceptible, but Lucas saw it. And he recognized it for what it was. An emotional leak, the involuntary crack in a poorly built façade.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas thought idly that it had been a while since he’d seen such a beautiful smile. But after finishing his analysis of this guy’s behavior, he came to the conclusion that he was also a damn bad liar.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>And yet there was something about the quiet, the secrecy, the sheer lack of words that only made Lucas want to talk to him more. He was so caught up in it that he only realized where they were when the elevators came into view.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Are you following me now?” the other man asked quietly.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>“Hell no. I just need to go up too.”</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The elevator doors slid open. The man stepped inside without a word, showing no reaction at all as the doors closed and swallowed him. Lucas exhaled and ran a hand through his still-damp hair. Something told him he would be seeing that “journalist” a lot more often.</span></p>`
         }
     ];
 
-    /* === FRAGEN === */
     const chapterQuestions = {
         1: [
-            { id: 'ch1_q1', label: 'Lucas nennt Jon und Ari seine "extra dads". Glaubst du ihnen die Nähe?', type: 'text' },
-            { id: 'ch1_q2', label: 'Maxwell und André werden angekündigt. Hat das deine Neugier geweckt?', type: 'text' }
+            { id: 'ch1_q1', label: 'Lucas nennt Jon und Ari seine "extra dads" – wie fühlt sich diese Familiendynamik für dich an? Glaubst du ihnen die Nähe?', type: 'text' },
+            { id: 'ch1_q2', label: 'Lucas wirkt sehr kontrolliert und kompetent. Macht ihn das interessant für dich – oder hättest du dir gewünscht, früher eine Schwäche zu sehen?', type: 'text' },
+            { id: 'ch1_q3', label: 'Jon und Ari haben einen kurzen intimen Moment im Taxi. Hat dich das berührt, oder kam es zu früh?', type: 'text' },
+            { id: 'ch1_q4', label: 'Was interessiert dich gerade mehr: Wer hat Jon reingelegt – oder wie es zwischen den Charakteren weitergeht?', type: 'text' },
+            { id: 'ch1_q5', label: 'Maxwell und André werden angekündigt ("English lord", "French art lover"). Hat das deine Neugier geweckt?', type: 'text' }
         ],
         2: [
-            { id: 'ch2_q1', label: 'Jon erzählt von seiner Niederlage. Hat das dein Bild von ihm verändert?', type: 'text' },
-            { id: 'ch2_q5', label: '"The real battle takes place in the mountains" – Neugierig auf St. Moritz?', type: 'text' }
+            { id: 'ch2_q1', label: 'Jon erzählt zum ersten Mal von einer großen Niederlage. Hat dich das überrascht? Hat es verändert, wie du ihn siehst?', type: 'text' },
+            { id: 'ch2_q2', label: 'Ari wird kurz wütend auf Jon, weil er ihm das verschwiegen hat. Wie hast du diesen Moment empfunden – berechtigt, zu hart, oder genau richtig?', type: 'text' },
+            { id: 'ch2_q3', label: 'Lucas denkt über Sauls Sohn nach, obwohl er ihn nie getroffen hat. Hat das deine Neugier auf Bençe geweckt?', type: 'text' },
+            { id: 'ch2_q4', label: 'Das Kapitel wechselt zwischen schwerem Gespräch und leichterem Tonfall (Essen, Drinks). Hat sich das natürlich angefühlt?', type: 'text' },
+            { id: 'ch2_q5', label: '"The real battle takes place in the mountains" – macht dich das neugierig auf St. Moritz?', type: 'text' }
         ],
         3: [
-            { id: 'ch3_q1', label: 'Das Treffen am Pool: Knistert es zwischen Lucas und dem Schwimmer?', type: 'text' },
-            { id: 'ch3_final', label: '🌟 Würdest du nach diesen 3 Kapiteln das Buch kaufen?', type: 'emoji', emojis: ['👎', '😐', '🤔', '👍', '💸'] }
+            { id: 'ch3_q1', label: 'Lucas und der mysteriöse Schwimmer treffen sich am Pool. Wie hat sich das angefühlt? Knistert es?', type: 'text' },
+            { id: 'ch3_q2', label: 'Er spricht kaum, lügt offensichtlich und verschwindet einfach. Macht ihn das interessant oder frustrierend?', type: 'text' },
+            { id: 'ch3_q3', label: 'Lucas analysiert den Fremden wie ein Rätsel, ist aber gleichzeitig körperlich angezogen. Funktioniert diese Mischung?', type: 'text' },
+            { id: 'ch3_q4', label: 'Lucas greift den Fremden impulsiv am Handgelenk. War das ein intensiver Moment?', type: 'text' },
+            { id: 'ch3_q5', label: 'Wer glaubst du, ist dieser "Journalist" wirklich? Hast du eine Vermutung?', type: 'text' },
+            { id: 'ch3_final', label: '🌟 Du hast die ersten drei Kapitel gelesen! Hand aufs Herz: Würdest du weiterlesen wollen? Und wenn ja – wegen der Geschichte, wegen Lucas, wegen dem Schwimmer, oder wegen etwas anderem?', type: 'text' }
         ]
     };
 
@@ -505,6 +747,7 @@
         { id: 'feeling', label: 'Wie hat sich dieses Kapitel angefühlt?', type: 'emoji', emojis: ['😴', '😐', '🙂', '😊', '🤩'] },
         { id: 'hooked', label: 'Lieblingsmoment?', type: 'text' }
     ];
+
 
     /* ================================================================
        === APP LOGIC ===
@@ -524,7 +767,6 @@
     let currentSelection = null;
     let editingHighlightId = null;
 
-    // init() wird jetzt von checkPassword() aufgerufen, nicht mehr automatisch!
     function init() {
         loadState();
         renderProgressBar();
@@ -557,17 +799,24 @@
     function renderProgressBar() {
         const bar = document.getElementById('progressBar');
         bar.innerHTML = chapters.map((c, i) => {
-            let status = 'locked';
-            if (c.id === currentChapter) status = 'current';
-            else if (completedChapters.includes(c.id)) status = 'completed';
-            else if (c.id === 1 || completedChapters.includes(c.id - 1)) status = 'unlocked';
+            let status = 'unlocked'; // Standardmäßig alles offen für dich
+            
+            if (c.id === currentChapter) {
+                status = 'current';
+            } else if (completedChapters.includes(c.id)) {
+                status = 'completed';
+            }
 
             const line = i < chapters.length - 1 
-                ? `<div class="progress-line ${completedChapters.includes(c.id) ? 'completed' : ''}"></div>` 
+                ? `<div class="progress-line ${completedChapters.includes(c.id) ? 'completed' : ''}" style="opacity: 0.5;"></div>` 
                 : '';
 
             return `
-                <div class="progress-dot ${status}" onclick="goToChapter(${c.id})" id="dot-${c.id}">${c.id}</div>
+                <div class="progress-dot ${status}" 
+                     onclick="goToChapter(${c.id})" 
+                     id="dot-${c.id}"
+                     style="cursor: pointer; opacity: 1;"> ${c.id}
+                </div>
                 ${line}
             `;
         }).join('');
@@ -579,13 +828,15 @@
     }
 
     function goToChapter(id) {
+        // Die Sicherheitsabfrage ist jetzt auskommentiert:
+        // if (id > 1 && !completedChapters.includes(id - 1) && id > currentChapter) return;
+        
         if (id === currentChapter) return;
-        if (id > 1 && !completedChapters.includes(id - 1) && id > currentChapter) return;
+        
         currentChapter = id;
         saveState();
         renderChapter();
         renderProgressBar();
-        // Auf Mobile Sidebar schließen wenn man wechselt
         document.getElementById('sidebar').classList.remove('visible');
     }
 
@@ -594,14 +845,25 @@
         document.getElementById('chapterNumber').textContent = ch.number;
         document.getElementById('chapterTitle').textContent = ch.title;
         
-        const html = ch.content.split(/\n\n+/).filter(p => p.trim()).map((p, i) => {
-            if (p.trim() === '❦') return '<div class="scene-break">❦</div>';
-            return `<p id="p-${i}">${p.trim()}</p>`;
-        }).join('');
+        const content = ch.content.trim();
+        let html = "";
+
+        // CHECK: Ist das schon HTML? (Erkennt es an <p> Tags am Anfang)
+        if (content.startsWith('<p') || content.startsWith('<div')) {
+            // Ja: Wir nehmen es 1:1, geben den Absätzen aber IDs für die Logik
+            // Wir fügen jedem <p> nachträglich eine ID hinzu, falls keine da ist
+            html = content.replace(/<p>/g, (match, offset) => `<p id="p-${offset}">`);
+        } else {
+            // Nein: Es ist reiner Text -> Wir bauen das HTML selbst (Alte Methode)
+            html = content.split(/\n\n+/).filter(p => p.trim()).map((p, i) => {
+                if (p.trim() === '❦') return '<div class="scene-break">❦</div>';
+                return `<p id="p-${i}">${p.trim()}</p>`;
+            }).join('');
+        }
         
         document.getElementById('manuscript').innerHTML = html;
         applyHighlights();
-        updateStats(ch.content);
+        updateStats(ch.content); // Stats Berechnung bleibt grob korrekt
         window.scrollTo(0, 0);
     }
 
@@ -614,12 +876,11 @@
 
     // === HIGHLIGHTING ===
     document.addEventListener('mouseup', handleSelection);
-    document.addEventListener('touchend', handleSelection); // Support für Mobile Touch
+    document.addEventListener('touchend', handleSelection);
 
     function handleSelection(e) {
         if (e.target.closest('.popup') || e.target.closest('.sidebar') || e.target.closest('.questionnaire-container')) return;
         
-        // Timeout für Mobile Selection Handling
         setTimeout(() => {
             const selection = window.getSelection();
             const text = selection.toString().trim();
@@ -693,16 +954,17 @@
 
     function applyHighlights() {
         const container = document.getElementById('manuscript');
-        const ch = chapters.find(c => c.id === currentChapter);
-        
-        let html = ch.content.split(/\n\n+/).filter(p => p.trim()).map(p => {
-             if (p.trim() === '❦') return '<div class="scene-break">❦</div>';
-             return `<p>${p.trim()}</p>`;
-        }).join('');
+        // Wir holen uns das HTML, das wir gerade in renderChapter gebaut haben
+        let html = container.innerHTML;
 
         const marks = highlights[currentChapter] || [];
         marks.forEach(h => {
+            // Sicherheit: Wir escapen den Suchtext für Regex
             const escapedText = h.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            // Der Trick: Wir suchen nur Text, der NICHT innerhalb von Tags (<...>) liegt.
+            // Das ist mit einfachem Regex schwer, aber für diesen Zweck reicht oft die einfache Suche,
+            // solange deine Markierungen nicht zufällig exakt wie HTML-Tags heißen.
+            
             const regex = new RegExp(`(${escapedText})`, 'i'); 
             html = html.replace(regex, `<span class="highlight ${h.category}" onclick="editMark(${h.id}, event)">$1</span>`);
         });
@@ -722,7 +984,7 @@
         }
     }
 
-    // === SIDEBAR & UI ===
+    // === SIDEBAR (JETZT MIT EXPORT BUTTON!) ===
     function toggleSidebar() {
         document.getElementById('sidebar').classList.toggle('visible');
         if (document.getElementById('sidebar').classList.contains('visible')) renderMarksList();
@@ -732,20 +994,27 @@
         const list = document.getElementById('marksList');
         const marks = highlights[currentChapter] || [];
         
-        if (marks.length === 0) {
-            list.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:2rem;">Noch keine Markierungen.</div>';
-            return;
-        }
+        // --- HIER NEU: DER MANUELLE DOWNLOAD BUTTON ---
+        let html = `
+            <button onclick="downloadJSON()" class="btn btn-ghost" style="width:100%; border:1px solid var(--gold); color:var(--gold); margin-bottom:1.5rem;">
+                💾 Zwischenstand speichern
+            </button>
+        `;
 
-        list.innerHTML = marks.map(m => `
-            <div class="mark-card ${m.category}" onclick="editMark(${m.id}, event)">
-                <div style="font-size:0.8rem; font-style:italic; margin-bottom:0.4rem; color:var(--text-secondary)">"${m.text.substring(0, 60)}..."</div>
-                <div style="font-size:0.85rem; color:var(--text-primary)">${m.comment || '<span style="opacity:0.5">Kein Kommentar</span>'}</div>
-            </div>
-        `).join('');
+        if (marks.length === 0) {
+            html += '<div style="text-align:center; color:var(--text-muted); padding:2rem;">Noch keine Markierungen in diesem Kapitel.</div>';
+        } else {
+            html += marks.map(m => `
+                <div class="mark-card ${m.category}" onclick="editMark(${m.id}, event)">
+                    <div style="font-size:0.8rem; font-style:italic; margin-bottom:0.4rem; color:var(--text-secondary)">"${m.text.substring(0, 60)}..."</div>
+                    <div style="font-size:0.85rem; color:var(--text-primary)">${m.comment || '<span style="opacity:0.5">Kein Kommentar</span>'}</div>
+                </div>
+            `).join('');
+        }
+        list.innerHTML = html;
     }
 
-    // === QUESTIONNAIRE & EXPORT ===
+    // === QUESTIONNAIRE & EXPORT LOGIK (ROBUSTER GEMACHT) ===
     function openQuestionnaire() {
         const container = document.getElementById('questionnaireContent');
         const specific = chapterQuestions[currentChapter] || [];
@@ -765,7 +1034,9 @@
 
             <div style="display:flex; justify-content:flex-end; gap:1rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
                 <button class="btn btn-ghost" onclick="document.getElementById('questionnaireContainer').classList.remove('visible')">Zurück</button>
-                <button class="btn btn-primary" onclick="finishChapter()">Absenden & Weiter</button>
+                <button class="btn btn-primary" onclick="finishChapter()">
+                    ${currentChapter === chapters.length ? 'Absenden & Download' : 'Absenden & Weiter'}
+                </button>
             </div>
         `;
         
@@ -813,17 +1084,19 @@
             completedChapters.push(currentChapter);
         }
         saveState();
-        document.getElementById('questionnaireContainer').classList.remove('visible');
         
         if (currentChapter === chapters.length) {
-            downloadJSON();
+            // Letztes Kapitel: Starte Download Screen
+            downloadJSON(true); 
         } else {
+            // Nächstes Kapitel
+            document.getElementById('questionnaireContainer').classList.remove('visible');
             goToChapter(currentChapter + 1);
         }
         renderProgressBar();
     }
 
-    function downloadJSON() {
+    function downloadJSON(showSuccessScreen = false) {
         const data = {
             reader: "Beta Reader",
             date: new Date().toISOString(),
@@ -833,19 +1106,41 @@
                 answers: questionnaires
             }
         };
+
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
+        const filename = `RichterScale_Feedback_Chap${currentChapter}.json`;
+        
+        // 1. Versuche automatischen Download
         const a = document.createElement('a');
         a.href = url;
-        a.download = `RichterScale_Feedback_Chap1-${currentChapter}.json`;
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        alert("🎉 Danke! Bitte sende mir die heruntergeladene Datei.");
+        
+        // 2. Falls "Abschluss"-Modus: Zeige den Screen mit manuellem Link (Fallback)
+        if (showSuccessScreen) {
+            const container = document.getElementById('questionnaireContent');
+            container.innerHTML = `
+                <div style="text-align:center; padding:2rem 0;">
+                    <div style="font-size:3rem; margin-bottom:1rem;">🎉</div>
+                    <h2 style="font-family:var(--font-serif); margin-bottom:1rem;">Danke fürs Lesen!</h2>
+                    <p style="color:var(--text-secondary); margin-bottom:2rem;">Dein Feedback ist Gold wert.</p>
+                    
+                    <p style="font-size:0.9rem;">Falls der Download nicht automatisch gestartet ist:</p>
+                    <a href="${url}" download="${filename}" class="btn btn-primary" style="text-decoration:none; display:inline-block; margin:1rem 0; padding:1rem 2rem;">
+                        Feedback-Datei herunterladen ⬇️
+                    </a>
+                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:2rem;">
+                        Bitte schick mir die Datei einfach per Discord oder Mail.
+                    </p>
+                </div>
+            `;
+        } else {
+            alert("Zwischenstand wurde heruntergeladen!");
+        }
     }
-
-    // ACHTUNG: Hier KEIN init() Aufruf mehr. Das passiert jetzt erst nach dem Passwort-Check!
     </script>
 </body>
 </html>
