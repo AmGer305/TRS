@@ -354,23 +354,33 @@
     <div class="login-screen" id="loginScreen">
         <div style="font-size: 3rem; margin-bottom: 1rem;">🔐</div>
         <h2 style="font-family: var(--font-serif); margin-bottom: 1.5rem; color: var(--text-primary);">The Richter Scale</h2>
-        <input type="password" class="login-input" id="passwordInput" placeholder="Passwort eingeben">
-        <button class="btn btn-primary" onclick="checkPassword()">Zugang anfordern</button>
-        <div class="login-error" id="loginError">Falsches Passwort. Versuch's nochmal.</div>
+        <input type="password" class="login-input" id="passwordInput" placeholder="Enter password">
+        <button class="btn btn-primary" onclick="checkPassword()">Continue</button>
+        <div class="login-error" id="loginError">Wrong password.</div>
     </div>
 
     <div class="welcome-screen hidden" id="welcomeScreen">
         <div class="welcome-content">
             <div style="font-size: 4rem; margin-bottom: 1.5rem;">📖</div>
-            <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Willkommen im 
+            <h1 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">Welcome to
                 
             </h1>
             <p style="font-family: var(--font-sans); color: var(--text-secondary); margin-bottom: 2rem;">
-                Hey! Danke, dass du dir Zeit für "The Richter Scale" nimmst. 
-                Du kannst beim Lesen Text markieren, um mir deine Reaktionen zu zeigen - das ist aber völlig optional, also du kannst auch einfach nur lesen und gar nichts markieren. Am Ende jedes Kapitels würde ich dich bitten, dass du oben rechts auf "Fertig" klickst; dann öffnet sich ein Feedback-Fragebogen, den brauche ich, damit ich weiß, wo ich noch nachbessern kann 😅 Dein Browser sollte den automatisch herunterladen - im ersten Durchlauf erst, nachdem du Kapitel 3 beendet hast - und dann schickst du mir die Datei mit .json am Ende, die kann ich auslesen und dann weiter tüfteln. Vielen Lieben Dank für deine Zeit! 
+                Hey! 🍀
+                Thanks so much for taking the time to read my story and share your feedback.
+
+                This is a private reading space where you can highlight passages and tag them if something stands out — 
+                whether it’s style, tension, character, or anything else. 
+                That’s completely optional; you’re also welcome to just read.
+
+                Once you’re done, please click “Done ✓” in the top right to fill out a short questionnaire. 
+                It helps me understand what’s working and where the story can be improved.
+                Your browser will automatically download your responses — just send the file back to me on Discord (@riewewrites).
+
+                Thank you for being here 💙
             </p>
             <button class="btn btn-primary" style="padding: 0.9rem 2.5rem;" onclick="startReading()">
-                Auf geht's!
+                Let's go! 📚
             </button>
         </div>
     </div>
@@ -380,7 +390,7 @@
             <div class="logo"> <span>• The Richter Scale</span></div>
             <div class="header-controls">
                 <button class="btn" onclick="toggleSidebar()">💬 Marks</button>
-                <button class="btn btn-primary" onclick="openQuestionnaire()">Fertig ✓</button>
+                <button class="btn btn-primary" onclick="openQuestionnaire()">Done ✓</button>
             </div>
         </div>
     </header>
@@ -403,19 +413,19 @@
         <div class="popup-quote" id="popupQuote"></div>
         <div class="category-grid">
             <button class="cat-btn style" onclick="selectCategory('style')">
-                <span class="emoji">✒️</span>Stil
+                <span class="emoji">✒️</span>Style
             </button>
             <button class="cat-btn tension" onclick="selectCategory('tension')">
-                <span class="emoji">⚡</span>Spannung
+                <span class="emoji">⚡</span>Tension
             </button>
             <button class="cat-btn char" onclick="selectCategory('char')">
-                <span class="emoji">🎭</span>Charakter
+                <span class="emoji">🎭</span>Character
             </button>
             <button class="cat-btn atmo" onclick="selectCategory('atmo')">
-                <span class="emoji">🌫️</span>Atmosphäre
+                <span class="emoji">🌫️</span>Atmosphere
             </button>
             <button class="cat-btn logic" onclick="selectCategory('logic')">
-                <span class="emoji">❔</span>Logik?
+                <span class="emoji">❔</span>Logic
             </button>
             <button class="cat-btn pacing" onclick="selectCategory('pacing')">
                 <span class="emoji">⏳</span>Pacing
@@ -423,17 +433,17 @@
         </div>
         <textarea class="popup-textarea" id="popupComment" placeholder="Gedanken dazu? (optional)"></textarea>
         <div style="display:flex; justify-content:space-between; margin-top:1rem;">
-            <button class="btn btn-ghost" id="btnDelete" style="color:#c87070;" onclick="deleteHighlight()">Löschen</button>
+            <button class="btn btn-ghost" id="btnDelete" style="color:#c87070;" onclick="deleteHighlight()">Delete</button>
             <div style="display:flex; gap:0.5rem;">
-                <button class="btn btn-ghost" onclick="closePopup()">Abbrechen</button>
-                <button class="btn btn-primary" onclick="saveHighlight()">Speichern</button>
+                <button class="btn btn-ghost" onclick="closePopup()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveHighlight()">Save</button>
             </div>
         </div>
     </div>
 
     <aside class="sidebar" id="sidebar">
         <div style="display:flex; justify-content:space-between; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:0.8rem;">
-            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted);">Deine Markierungen</span>
+            <span style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted);">Your marks</span>
             <button onclick="toggleSidebar()" style="background:none; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer;">×</button>
         </div>
         <div id="marksList"></div>
@@ -445,8 +455,8 @@
 
     <footer class="footer">
         <div class="footer-inner">
-            <span>Wörter: <span style="color:var(--text-secondary)" id="wordCount">0</span></span>
-            <span>Zeit: <span style="color:var(--text-secondary)" id="readTime">0 min</span></span>
+            <span>Words: <span style="color:var(--text-secondary)" id="wordCount">0</span></span>
+            <span>Time: <span style="color:var(--text-secondary)" id="readTime">0 min</span></span>
             <span>Marks: <span style="color:var(--text-secondary)" id="markCount">0</span></span>
         </div>
     </footer>
@@ -719,33 +729,34 @@
     ];
 
     const chapterQuestions = {
-        1: [
-            { id: 'ch1_q1', label: 'Lucas nennt Jon und Ari seine "extra dads" – wie fühlt sich diese Familiendynamik für dich an? Glaubst du ihnen die Nähe?', type: 'text' },
-            { id: 'ch1_q2', label: 'Lucas wirkt sehr kontrolliert und kompetent. Macht ihn das interessant für dich – oder hättest du dir gewünscht, früher eine Schwäche zu sehen?', type: 'text' },
-            { id: 'ch1_q3', label: 'Jon und Ari haben einen kurzen intimen Moment im Taxi. Hat dich das berührt, oder kam es zu früh?', type: 'text' },
-            { id: 'ch1_q4', label: 'Was interessiert dich gerade mehr: Wer hat Jon reingelegt – oder wie es zwischen den Charakteren weitergeht?', type: 'text' },
-            { id: 'ch1_q5', label: 'Maxwell und André werden angekündigt ("English lord", "French art lover"). Hat das deine Neugier geweckt?', type: 'text' }
-        ],
-        2: [
-            { id: 'ch2_q1', label: 'Jon erzählt zum ersten Mal von einer großen Niederlage. Hat dich das überrascht? Hat es verändert, wie du ihn siehst?', type: 'text' },
-            { id: 'ch2_q2', label: 'Ari wird kurz wütend auf Jon, weil er ihm die Sache mit Saul verschwiegen hat. Wie hast du diesen Moment empfunden – berechtigt, zu hart, oder genau richtig?', type: 'text' },
-            { id: 'ch2_q3', label: 'Lucas denkt über Sauls Sohn nach, obwohl er ihn nie getroffen hat. Hat das deine Neugier auf Bençe geweckt?', type: 'text' },
-            { id: 'ch2_q4', label: 'Das Kapitel wechselt zwischen schwerem Gespräch und leichterem Tonfall (Essen, Drinks). Hat sich das natürlich angefühlt?', type: 'text' },
-            { id: 'ch2_q5', label: '"The real battle takes place in the mountains" – macht dich das neugierig auf St. Moritz?', type: 'text' }
-        ],
-        3: [
-            { id: 'ch3_q1', label: 'Lucas und der mysteriöse Schwimmer treffen sich am Pool. Wie hat sich das angefühlt? Knistert es?', type: 'text' },
-            { id: 'ch3_q2', label: 'Er spricht kaum, lügt offensichtlich und verschwindet einfach. Macht ihn das interessant oder frustrierend?', type: 'text' },
-            { id: 'ch3_q3', label: 'Lucas analysiert den Fremden wie ein Rätsel, ist aber gleichzeitig körperlich angezogen. Funktioniert diese Mischung?', type: 'text' },
-            { id: 'ch3_q4', label: 'Lucas greift den Fremden impulsiv am Handgelenk. War das ein intensiver Moment?', type: 'text' },
-            { id: 'ch3_q5', label: 'Wer glaubst du, ist dieser "Journalist" wirklich? Hast du eine Vermutung?', type: 'text' },
-            { id: 'ch3_final', label: '🌟 Du hast die ersten drei Kapitel gelesen! Hand aufs Herz: Würdest du weiterlesen wollen? Und wenn ja – wegen der Geschichte, wegen Lucas, wegen dem Schwimmer, oder wegen etwas anderem?', type: 'text' }
-        ]
-    };
+    1: [
+        { id: 'ch1_q1', label: 'Lucas refers to Jon and Ari as his “extra dads.” How does that family dynamic feel to you? Do you buy the closeness between them?', type: 'text' },
+        { id: 'ch1_q2', label: 'Lucas (should) come across as controlled and highly competent. Does that make him interesting to you — or would you have liked to see a vulnerability earlier?', type: 'text' },
+        { id: 'ch1_q3', label: 'Jon and Ari share a brief intimate moment in the taxi. Did that move you, or did it feel too early?', type: 'text' },
+        { id: 'ch1_q4', label: 'What pulls you in more right now: who set Jon up — or where the relationships between the characters are heading?', type: 'text' },
+        { id: 'ch1_q5', label: 'Maxwell and André are teased (“English lord,” “French art lover”). Did that spark your curiosity?', type: 'text' }
+    ],
+    2: [
+        { id: 'ch2_q1', label: 'Jon talks about a major failure for the first time. Did that surprise you? Did it change how you see him?', type: 'text' },
+        { id: 'ch2_q2', label: 'Ari gets briefly angry at Jon for keeping the Saul situation from him. How did that moment land for you — justified, too harsh, or exactly right?', type: 'text' },
+        { id: 'ch2_q3', label: 'Lucas starts thinking about Saul’s son even though he’s never met him. Did that spark your curiosity about Bençe?', type: 'text' },
+        { id: 'ch2_q4', label: 'The chapter shifts between heavy conversation and lighter moments (food, drinks). Did that feel natural to you?', type: 'text' },
+        { id: 'ch2_q5', label: '<em>The real battle takes place in the mountains.</em> Does that make you curious about St. Moritz?', type: 'text' }
+    ],
+    3: [
+        { id: 'ch3_q1', label: 'Lucas meets the mysterious swimmer at the pool. How did that feel to you? Was there chemistry?', type: 'text' },
+        { id: 'ch3_q2', label: 'He barely speaks, is clearly lying, and then disappears. Does that make him intriguing — or frustrating?', type: 'text' },
+        { id: 'ch3_q3', label: 'Lucas analyzes the stranger like a puzzle while also feeling physically drawn to him. Does that combination work for you?', type: 'text' },
+        { id: 'ch3_q4', label: 'Lucas impulsively grabs the stranger by the wrist. Did that feel like an intense moment?', type: 'text' },
+        { id: 'ch3_q5', label: 'Who do you think this “journalist” really is? Do you have a theory?', type: 'text' },
+        { id: 'ch3_final', label: '🌟 You’ve read the first three chapters! Honestly — would you want to keep reading? And if so, why: the plot, Lucas, the swimmer, or something else?', type: 'text' }
+    ]
+};
+
 
     const standardQuestions = [
-        { id: 'feeling', label: 'Wie hat sich dieses Kapitel angefühlt?', type: 'emoji', emojis: ['😴', '😐', '🙂', '😊', '🤩'] },
-        { id: 'hooked', label: 'Hattest du einen Lieblingsmoment?', type: 'text' }
+        { id: 'feeling', label: 'How did this chapter feel?', type: 'emoji', emojis: ['😴', '😐', '🙂', '😊', '🤩'] },
+        { id: 'hooked', label: 'Did you have a favorite moment?', type: 'text' }
     ];
 
 
@@ -994,20 +1005,20 @@
         const list = document.getElementById('marksList');
         const marks = highlights[currentChapter] || [];
         
-        // --- HIER NEU: DER MANUELLE DOWNLOAD BUTTON ---
+        
         let html = `
             <button onclick="downloadJSON()" class="btn btn-ghost" style="width:100%; border:1px solid var(--gold); color:var(--gold); margin-bottom:1.5rem;">
-                💾 Zwischenstand speichern
+                💾 Save progress
             </button>
         `;
 
         if (marks.length === 0) {
-            html += '<div style="text-align:center; color:var(--text-muted); padding:2rem;">Noch keine Markierungen in diesem Kapitel.</div>';
+            html += '<div style="text-align:center; color:var(--text-muted); padding:2rem;">No marks in this chapter yet.</div>';
         } else {
             html += marks.map(m => `
                 <div class="mark-card ${m.category}" onclick="editMark(${m.id}, event)">
                     <div style="font-size:0.8rem; font-style:italic; margin-bottom:0.4rem; color:var(--text-secondary)">"${m.text.substring(0, 60)}..."</div>
-                    <div style="font-size:0.85rem; color:var(--text-primary)">${m.comment || '<span style="opacity:0.5">Kein Kommentar</span>'}</div>
+                    <div style="font-size:0.85rem; color:var(--text-primary)">${m.comment || '<span style="opacity:0.5">No comment</span>'}</div>
                 </div>
             `).join('');
         }
@@ -1020,22 +1031,22 @@
         const specific = chapterQuestions[currentChapter] || [];
         
         let html = `
-            <h2 style="text-align:center; font-family:var(--font-serif); margin-bottom:2rem;">Kapitel ${currentChapter} Abschluss</h2>
+            <h2 style="text-align:center; font-family:var(--font-serif); margin-bottom:2rem;">Chapter ${currentChapter} Completion</h2>
             
             <div style="margin-bottom:2rem;">
-                <div style="font-size:0.7rem; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Allgemein</div>
+                <div style="font-size:0.7rem; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">General</div>
                 ${standardQuestions.map(q => renderQField(q)).join('')}
             </div>
 
             <div style="margin-bottom:2rem;">
-                <div style="font-size:0.7rem; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Zum Inhalt</div>
-                ${specific.length ? specific.map(q => renderQField(q)).join('') : '<p style="color:var(--text-muted)">Keine spezifischen Fragen.</p>'}
+                <div style="font-size:0.7rem; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">About the content</div>
+                ${specific.length ? specific.map(q => renderQField(q)).join('') : '<p style="color:var(--text-muted)">No specific questions.</p>'}
             </div>
 
             <div style="display:flex; justify-content:flex-end; gap:1rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
-                <button class="btn btn-ghost" onclick="document.getElementById('questionnaireContainer').classList.remove('visible')">Zurück</button>
+                <button class="btn btn-ghost" onclick="document.getElementById('questionnaireContainer').classList.remove('visible')">Back</button>
                 <button class="btn btn-primary" onclick="finishChapter()">
-                    ${currentChapter === chapters.length ? 'Absenden & Download' : 'Absenden & Weiter'}
+                    ${currentChapter === chapters.length ? 'Submit & Download' : 'Submit & Continue'}
                 </button>
             </div>
         `;
@@ -1125,20 +1136,20 @@
             container.innerHTML = `
                 <div style="text-align:center; padding:2rem 0;">
                     <div style="font-size:3rem; margin-bottom:1rem;">🎉</div>
-                    <h2 style="font-family:var(--font-serif); margin-bottom:1rem;">Danke fürs Lesen!</h2>
-                    <p style="color:var(--text-secondary); margin-bottom:2rem;">Dein Feedback ist Gold wert.</p>
+                    <h2 style="font-family:var(--font-serif); margin-bottom:1rem;">Thank you for reading!</h2>
+                    <p style="color:var(--text-secondary); margin-bottom:2rem;">Your feedback is invaluable.</p>
                     
-                    <p style="font-size:0.9rem;">Falls der Download nicht automatisch gestartet ist:</p>
+                    <p style="font-size:0.9rem;">If the download didn't start automatically:</p>
                     <a href="${url}" download="${filename}" class="btn btn-primary" style="text-decoration:none; display:inline-block; margin:1rem 0; padding:1rem 2rem;">
-                        Feedback-Datei herunterladen ⬇️
+                        Download Feedback File ⬇️
                     </a>
                     <p style="font-size:0.8rem; color:var(--text-muted); margin-top:2rem;">
-                        Bitte schick mir die Datei einfach per Discord oder Mail.
+                        Please send me the file via Discord @riewewrites.
                     </p>
                 </div>
             `;
         } else {
-            alert("Zwischenstand wurde heruntergeladen!");
+            alert("Progress has been downloaded!");
         }
     }
     </script>
