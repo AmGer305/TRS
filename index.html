@@ -452,8 +452,7 @@
     <div class="questionnaire-container" id="questionnaireContainer">
         <div class="questionnaire" id="questionnaireContent"></div>
         <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
-    <button class="btn btn-ghost" onclick="closeQuestionnaire()">← Back</button>
-    <button class="btn btn-primary" onclick="submitQuestionnaire()">Download file</button>
+    <button class="btn btn-ghost" onclick="closeQuestionnaire()">← Back to chapter</button>
 </div>
 
     </div>
@@ -684,7 +683,7 @@
 <p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas slowed his steps and watched. The man’s execution was flawless, his technique unmistakably professional. This wasn’t casual training.</span></p>
 <p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>At the end of the lane, the swimmer executed a perfect flip turn, vanished beneath the surface for a moment, then continued his lap. Sunlight danced on the water and caught in the smooth lines of his muscles as he moved. There was something fascinating about the absolute control of his movements; the way he cut through the water with complete ease was striking.</span></p>
 <p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas, who had momentarily forgotten why he was even there, found himself staring at the pool’s edge. The man reached the end of his lane and surfaced directly in front of him. He paused, pushed his goggles up into his hair, and fixed Lucas with an unimpressed look.</span></p>
-<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span></span><em><span class="s2">“Was isch?”</span></em><span class="s1">he asked flatly.</span></p>
+<p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span></span><em><span class="s2">“Was isch?”</span></em><span class="s1"> he asked flatly.</span></p>
 <p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>Lucas swallowed. The eyes. He had never seen eyes that green before. A green you’d expect to find in a painting—deep and rich, threaded with brown flecks that gave them even more depth.</span></p>
 <p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The man had spoken in Swiss German—which Lucas didn’t understand—but the tone had been unmistakable. Lucas wasn’t the type to lose his footing over a striking pair of eyes or well-defined muscles. Paradoxically, his fatigue only fueled his ambition to make a good first impression here. “Not bad,” he said in English, offering a casual smile before tossing his towel onto the nearest lounger.</span></p>
 <p class="ps4"><span class="s1"><span class="Scrivener-tab-span">	</span>The swimmer seemed unimpressed and switched effortlessly into English. “I don’t need an audience.”</span></p>
@@ -1048,7 +1047,8 @@
             </div>
 
             <div style="display:flex; justify-content:flex-end; gap:1rem; border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;">
-                <button class="btn btn-ghost" onclick="document.getElementById('questionnaireContainer').classList.remove('visible')">Back</button>
+                <button class="btn btn-ghost" onclick="closeQuestionnaire()">Back</button>
+
                 <button class="btn btn-primary" onclick="finishChapter()">
                     ${currentChapter === chapters.length ? 'Submit & Download' : 'Submit & Continue'}
                 </button>
@@ -1066,6 +1066,12 @@
             if(btn) btn.classList.add('selected');
         });
     }
+
+    function closeQuestionnaire() {
+    const qc = document.getElementById('questionnaireContainer');
+    qc.classList.remove('visible');
+    qc.scrollTop = 0;
+}
 
     function renderQField(q) {
         if (q.type === 'emoji') {
@@ -1121,17 +1127,6 @@
                 answers: questionnaires
             }
         };
-
-    function closeQuestionnaire() {
-    document.getElementById('questionnaireContainer')
-        .classList.remove('visible');
-}
-
-    function closeQuestionnaire() {
-    const qc = document.getElementById('questionnaireContainer');
-    qc.classList.remove('visible');
-    qc.scrollTop = 0;
-}
 
 
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
