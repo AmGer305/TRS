@@ -451,6 +451,11 @@
 
     <div class="questionnaire-container" id="questionnaireContainer">
         <div class="questionnaire" id="questionnaireContent"></div>
+        <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+    <button class="btn btn-ghost" onclick="closeQuestionnaire()">← Back</button>
+    <button class="btn btn-primary" onclick="submitQuestionnaire()">Download file</button>
+</div>
+
     </div>
 
     <footer class="footer">
@@ -1116,6 +1121,18 @@
                 answers: questionnaires
             }
         };
+
+    function closeQuestionnaire() {
+    document.getElementById('questionnaireContainer')
+        .classList.remove('visible');
+}
+
+    function closeQuestionnaire() {
+    const qc = document.getElementById('questionnaireContainer');
+    qc.classList.remove('visible');
+    qc.scrollTop = 0;
+}
+
 
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
